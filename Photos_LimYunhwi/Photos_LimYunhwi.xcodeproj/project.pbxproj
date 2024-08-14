@@ -13,6 +13,7 @@
 		14FAC4A22C6C48700066D44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14FAC4A12C6C48700066D44F /* Assets.xcassets */; };
 		14FAC4A52C6C48700066D44F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 14FAC4A42C6C48700066D44F /* Base */; };
 		14FAC4B82C6C95750066D44F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */; };
+		14FAC4BF2C6C96A40066D44F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4BE2C6C96A40066D44F /* SampleData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		14FAC4A42C6C48700066D44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14FAC4A62C6C48700066D44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
+		14FAC4BE2C6C96A40066D44F /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,8 @@
 		14FAC4972C6C486F0066D44F /* Photos_LimYunhwi */ = {
 			isa = PBXGroup;
 			children = (
-				14FAC4B92C6C95E40066D44F /* AlbumViewController */,
+				14FAC4BD2C6C96910066D44F /* Model */,
+				14FAC4BA2C6C962A0066D44F /* Controllers */,
 				14FAC4B62C6C95640066D44F /* Views */,
 				14FAC4982C6C486F0066D44F /* AppDelegate.swift */,
 				14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */,
@@ -81,6 +84,22 @@
 				14FAC49C2C6C486F0066D44F /* AlbumViewController.swift */,
 			);
 			path = AlbumViewController;
+			sourceTree = "<group>";
+		};
+		14FAC4BA2C6C962A0066D44F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				14FAC4B92C6C95E40066D44F /* AlbumViewController */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		14FAC4BD2C6C96910066D44F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				14FAC4BE2C6C96A40066D44F /* SampleData.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +175,7 @@
 				14FAC49D2C6C486F0066D44F /* AlbumViewController.swift in Sources */,
 				14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */,
 				14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */,
+				14FAC4BF2C6C96A40066D44F /* SampleData.swift in Sources */,
 				14FAC4B82C6C95750066D44F /* UIView+Constraints.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
