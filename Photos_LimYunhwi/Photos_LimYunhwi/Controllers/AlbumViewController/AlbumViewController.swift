@@ -10,6 +10,8 @@ import UIKit
 class AlbumViewController: UIViewController {
     
     var dataSouce: DataSource!
+    var snapshot: Snapshot!
+    private let titleElementKind = "title-element-kind"
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
 
@@ -35,10 +37,14 @@ private extension AlbumViewController {
     
     func configureDataSource() {
         let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
-        
         dataSouce = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
         })
+        
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration(elementKind: titleElementKind, handler: supplementaryRegistrationHandler)
+        dataSouce.supplementaryViewProvider = { collectionView, kind, indexPath in
+            return collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
+        }
         
         updateSnapshot()
         collectionView.dataSource = dataSouce
@@ -68,7 +74,15 @@ private extension AlbumViewController {
         
         let section = NSCollectionLayoutSection(group: containerGroup)
         section.orthogonalScrollingBehavior = .groupPaging
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        section.boundarySupplementaryItems = [titleBoundarySupplementaryItem()]
         
         return section
+    }
+    
+    func titleBoundarySupplementaryItem() -> NSCollectionLayoutBoundarySupplementaryItem {
+        let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .estimated(50))
+        return NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSize, elementKind: titleElementKind, alignment: .top)
     }
 }

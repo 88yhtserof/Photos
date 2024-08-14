@@ -8,9 +8,13 @@
 import UIKit
 
 extension AlbumViewController {
-    enum Section {
-        case myAlbum
-        case mediaTypes
+    enum Section: String {
+        case myAlbum = "나의 앨범"
+        case mediaTypes = "미디어 유형"
+        
+        var title: String {
+            self.rawValue
+        }
     }
     
     struct Item: Hashable {
@@ -37,9 +41,13 @@ extension AlbumViewController {
         }
     }
     
+    func supplementaryRegistrationHandler(supplementaryView: TitleSupplementaryView, string: String, indexPath: IndexPath) {
+        supplementaryView.title = snapshot.sectionIdentifiers[indexPath.section].title
+    }
+    
     func updateSnapshot() {
         let list = SampleData.sample.map{ Item(myAlbums: $0) }
-        var snapshot = Snapshot()
+        snapshot = Snapshot()
         snapshot.appendSections([.myAlbum])
         snapshot.appendItems(list, toSection: .myAlbum)
         dataSouce.apply(snapshot)

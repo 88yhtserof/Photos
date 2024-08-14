@@ -16,6 +16,7 @@
 		14FAC4BF2C6C96A40066D44F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4BE2C6C96A40066D44F /* SampleData.swift */; };
 		14FAC4C32C6C97820066D44F /* GridListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C22C6C97820066D44F /* GridListCell.swift */; };
 		14FAC4C52C6C97E10066D44F /* AlbumViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */; };
+		14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		14FAC4BE2C6C96A40066D44F /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		14FAC4C22C6C97820066D44F /* GridListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridListCell.swift; sourceTree = "<group>"; };
 		14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+DataSource.swift"; sourceTree = "<group>"; };
+		14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 			children = (
 				14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */,
 				14FAC4C22C6C97820066D44F /* GridListCell.swift */,
+				14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -183,6 +186,7 @@
 				14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */,
 				14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */,
 				14FAC4BF2C6C96A40066D44F /* SampleData.swift in Sources */,
+				14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */,
 				14FAC4B82C6C95750066D44F /* UIView+Constraints.swift in Sources */,
 				14FAC4C32C6C97820066D44F /* GridListCell.swift in Sources */,
 			);
