@@ -56,10 +56,10 @@
 		14FAC4972C6C486F0066D44F /* Photos_LimYunhwi */ = {
 			isa = PBXGroup;
 			children = (
+				14FAC4B92C6C95E40066D44F /* AlbumViewController */,
 				14FAC4B62C6C95640066D44F /* Views */,
 				14FAC4982C6C486F0066D44F /* AppDelegate.swift */,
 				14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */,
-				14FAC49C2C6C486F0066D44F /* AlbumViewController.swift */,
 				14FAC4A12C6C48700066D44F /* Assets.xcassets */,
 				14FAC4A32C6C48700066D44F /* LaunchScreen.storyboard */,
 				14FAC4A62C6C48700066D44F /* Info.plist */,
@@ -73,6 +73,14 @@
 				14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		14FAC4B92C6C95E40066D44F /* AlbumViewController */ = {
+			isa = PBXGroup;
+			children = (
+				14FAC49C2C6C486F0066D44F /* AlbumViewController.swift */,
+			);
+			path = AlbumViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
