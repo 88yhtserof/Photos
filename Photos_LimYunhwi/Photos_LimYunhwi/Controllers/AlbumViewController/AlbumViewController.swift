@@ -9,6 +9,8 @@ import UIKit
 
 class AlbumViewController: UIViewController {
     
+    var dataSouce: DataSource!
+    
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
 
     override func viewDidLoad() {
@@ -16,6 +18,7 @@ class AlbumViewController: UIViewController {
         
         configureSubviews()
         configureView()
+        configureDataSource()
     }
 }
 
@@ -28,6 +31,17 @@ private extension AlbumViewController {
     func configureView() {
         view.backgroundColor = .white
         view.addPinnedSubview(collectionView, inset: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10), height: nil)
+    }
+    
+    func configureDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
+        
+        dataSouce = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+        })
+        
+        updateSnapshot()
+        collectionView.dataSource = dataSouce
     }
 }
 
@@ -45,7 +59,7 @@ private extension AlbumViewController {
         let containerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(500))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
-
+        
         let nestedGroup = NSCollectionLayoutGroup.vertical(layoutSize: nestedGroupSize, repeatingSubitem: item, count: 2)
         nestedGroup.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
         
