@@ -39,9 +39,19 @@ private extension AlbumViewController {
     }
     
     func configureDataSource() {
-        let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistrationHandler)
+        let myAlbumCellRegistration = UICollectionView.CellRegistration(handler: myAlbumCellRegistrationHandler)
+        let mediaTypesCellRegistration = UICollectionView.CellRegistration(handler: mediaTypesCellRegistrationHandler)
+        
         dataSouce = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
-            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+            guard let section = Section(rawValue: indexPath.section) else {
+                fatalError("Unknown section")
+            }
+            switch section {
+            case .myAlbum:
+                return collectionView.dequeueConfiguredReusableCell(using: myAlbumCellRegistration, for: indexPath, item: itemIdentifier)
+            case .mediaTypes:
+                return collectionView.dequeueConfiguredReusableCell(using: mediaTypesCellRegistration, for: indexPath, item: itemIdentifier.mediaTypes)
+            }
         })
         
         let supplementaryRegistration = UICollectionView.SupplementaryRegistration(elementKind: titleElementKind, handler: supplementaryRegistrationHandler)
@@ -56,10 +66,21 @@ private extension AlbumViewController {
 
 // MARK: CollectionView Layout
 private extension AlbumViewController {
+    
+    func sectionProviderHandler( sectionIndex: Int, layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        guard let section = Section(rawValue: sectionIndex) else {
+            fatalError("Unknown Section")
+        }
+        switch section {
+        case .myAlbum:
+            return sectionForMyAlbum()
+        case .mediaTypes:
+            return sectionForMediaTypes(layoutEnvironment)
+        }
+    }
+    
     func layout() -> UICollectionViewLayout {
-        let layout = UICollectionViewCompositionalLayout(section: sectionForMyAlbum())
-        
-        return layout
+        UICollectionViewCompositionalLayout(sectionProvider: sectionProviderHandler)
     }
     
     func sectionForMyAlbum() -> NSCollectionLayoutSection {
@@ -80,6 +101,17 @@ private extension AlbumViewController {
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         section.boundarySupplementaryItems = [titleBoundarySupplementaryItem()]
         section.interGroupSpacing = 10
+        
+        return section
+    }
+    
+    func sectionForMediaTypes(_ layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
+        var configuaration = UICollectionLayoutListConfiguration(appearance: .plain)
+        configuaration.showsSeparators = true
+        
+        let section = NSCollectionLayoutSection.list(using: configuaration, layoutEnvironment: layoutEnvironment)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
+        section.boundarySupplementaryItems = [titleBoundarySupplementaryItem()]
         
         return section
     }

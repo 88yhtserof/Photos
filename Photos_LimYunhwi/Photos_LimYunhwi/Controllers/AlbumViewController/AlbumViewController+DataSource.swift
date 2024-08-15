@@ -8,20 +8,26 @@
 import UIKit
 
 extension AlbumViewController {
-    enum Section: String {
-        case myAlbum = "나의 앨범"
-        case mediaTypes = "미디어 유형"
+    enum Section: Int {
+        
+        case myAlbum
+        case mediaTypes
         
         var title: String {
-            self.rawValue
+            switch self {
+            case .myAlbum:
+                return "나의 앨범"
+            case .mediaTypes:
+                return "미디어 유형"
+            }
         }
     }
     
     struct Item: Hashable {
         let myAlbums: GridSampleData? //임시
-        let mediaTypes: String?
+        let mediaTypes: ListSampleData?
         
-        init(myAlbums: GridSampleData? = nil, mediaTypes: String? = nil) {
+        init(myAlbums: GridSampleData? = nil, mediaTypes: ListSampleData? = nil) {
             self.myAlbums = myAlbums
             self.mediaTypes = mediaTypes
         }
@@ -32,7 +38,7 @@ extension AlbumViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    func cellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: Item) {
+    func myAlbumCellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: Item) {
         Task {
             let image = try await ImageLoader.loadImage(from: URL(string: item.myAlbums!.thumnailURL)!)
             cell.thumbnailImage = image
@@ -41,15 +47,27 @@ extension AlbumViewController {
         }
     }
     
+    func mediaTypesCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: ListSampleData) {
+        var configuration = UIListContentConfiguration.valueCell()
+        configuration.image = UIImage(systemName: item.type.name)
+        configuration.text = item.type.name
+        configuration.secondaryText = String(item.numberOfPhotos)
+        
+        cell.contentConfiguration = configuration
+        cell.accessories = [.disclosureIndicator()]
+    }
+    
     func supplementaryRegistrationHandler(supplementaryView: TitleSupplementaryView, string: String, indexPath: IndexPath) {
         supplementaryView.title = snapshot.sectionIdentifiers[indexPath.section].title
     }
     
     func updateSnapshot() {
         let list = GridSampleData.gridSample.map{ Item(myAlbums: $0) }
+        let mediaTypes = ListSampleData.listSample.map{ Item(mediaTypes: $0) }
         snapshot = Snapshot()
-        snapshot.appendSections([.myAlbum])
+        snapshot.appendSections([.myAlbum, .mediaTypes])
         snapshot.appendItems(list, toSection: .myAlbum)
+        snapshot.appendItems(mediaTypes, toSection: .mediaTypes)
         dataSouce.apply(snapshot)
         
     }
