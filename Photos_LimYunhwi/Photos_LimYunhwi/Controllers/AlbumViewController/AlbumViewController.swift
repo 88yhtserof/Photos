@@ -35,7 +35,7 @@ private extension AlbumViewController {
         navigationItem.largeTitleDisplayMode = .automatic
         
         view.backgroundColor = .white
-        view.addPinnedSubview(collectionView, inset: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10), height: nil)
+        view.addPinnedSubview(collectionView, inset: UIEdgeInsets(top: 10, left: 15, bottom: 0, right: -15), height: nil)
     }
     
     func configureDataSource() {
@@ -64,8 +64,8 @@ private extension AlbumViewController {
     
     func sectionForMyAlbum() -> NSCollectionLayoutSection {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(0.48))
-        let nestedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.48), heightDimension: .fractionalHeight(1.0))
-        let containerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(500))
+        let nestedGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5), heightDimension: .fractionalHeight(1.0))
+        let containerGroupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .absolute(480))
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         
@@ -73,12 +73,13 @@ private extension AlbumViewController {
         nestedGroup.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
         
         let containerGroup = NSCollectionLayoutGroup.horizontal(layoutSize: containerGroupSize, repeatingSubitem: nestedGroup, count: 2)
-        containerGroup.interItemSpacing = NSCollectionLayoutSpacing.fixed(10)
+        containerGroup.interItemSpacing = NSCollectionLayoutSpacing.flexible(10)
         
         let section = NSCollectionLayoutSection(group: containerGroup)
         section.orthogonalScrollingBehavior = .groupPaging
         section.contentInsets = NSDirectionalEdgeInsets(top: 10, leading: 0, bottom: 10, trailing: 0)
         section.boundarySupplementaryItems = [titleBoundarySupplementaryItem()]
+        section.interGroupSpacing = 10
         
         return section
     }
