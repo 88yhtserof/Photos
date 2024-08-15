@@ -31,6 +31,9 @@ private extension AlbumViewController {
     }
     
     func configureView() {
+        navigationItem.title = "앨범"
+        navigationItem.largeTitleDisplayMode = .automatic
+        
         view.backgroundColor = .white
         view.addPinnedSubview(collectionView, inset: UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10), height: nil)
     }

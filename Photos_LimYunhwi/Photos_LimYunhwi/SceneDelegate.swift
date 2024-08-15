@@ -17,7 +17,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = UIWindow(windowScene: windowScene)
         
         let rootViewController = AlbumViewController()
-        self.window?.rootViewController = UINavigationController(rootViewController: rootViewController)
+        let navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController.navigationBar.prefersLargeTitles = true
+        
+        self.window?.rootViewController = navigationController
         self.window?.makeKeyAndVisible()
     }
 }
