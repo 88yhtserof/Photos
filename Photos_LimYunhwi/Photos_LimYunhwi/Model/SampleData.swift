@@ -39,7 +39,9 @@ extension GridSampleData {
         GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2029 여름", numberOfAlbums: "403"),
         GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2030 여름", numberOfAlbums: "403")
     ]
-    
+}
+
+extension ListSampleData {
     static let listSample = [
         ListSampleData(type: .video, numberOfPhotos: 35),
         ListSampleData(type: .livephoto, numberOfPhotos: 144)
