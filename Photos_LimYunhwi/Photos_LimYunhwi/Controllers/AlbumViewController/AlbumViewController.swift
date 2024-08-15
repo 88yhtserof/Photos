@@ -80,7 +80,9 @@ private extension AlbumViewController {
     }
     
     func layout() -> UICollectionViewLayout {
-        UICollectionViewCompositionalLayout(sectionProvider: sectionProviderHandler)
+        var configuration = UICollectionViewCompositionalLayoutConfiguration()
+        configuration.interSectionSpacing = 20
+        return UICollectionViewCompositionalLayout(sectionProvider: sectionProviderHandler, configuration: configuration)
     }
     
     func sectionForMyAlbum() -> NSCollectionLayoutSection {
