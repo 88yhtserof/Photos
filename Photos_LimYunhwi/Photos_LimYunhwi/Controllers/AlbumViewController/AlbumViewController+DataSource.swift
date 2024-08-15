@@ -18,10 +18,10 @@ extension AlbumViewController {
     }
     
     struct Item: Hashable {
-        let myAlbums: SampleData? //임시
+        let myAlbums: GridSampleData? //임시
         let mediaTypes: String?
         
-        init(myAlbums: SampleData? = nil, mediaTypes: String? = nil) {
+        init(myAlbums: GridSampleData? = nil, mediaTypes: String? = nil) {
             self.myAlbums = myAlbums
             self.mediaTypes = mediaTypes
         }
@@ -46,7 +46,7 @@ extension AlbumViewController {
     }
     
     func updateSnapshot() {
-        let list = SampleData.sample.map{ Item(myAlbums: $0) }
+        let list = GridSampleData.gridSample.map{ Item(myAlbums: $0) }
         snapshot = Snapshot()
         snapshot.appendSections([.myAlbum])
         snapshot.appendItems(list, toSection: .myAlbum)

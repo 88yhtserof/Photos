@@ -7,23 +7,38 @@
 
 import UIKit
 
-struct SampleData: Hashable {
+struct GridSampleData: Hashable {
     let thumnailURL: String
     let albumTitle: String
     let numberOfAlbums: String
 }
 
+struct ListSampleData: Hashable {
+    let type: MediaType
+    let numberOfPhotos: Int
+    
+    enum MediaType: String {
+        case video = "video"
+        case livephoto = "livephoto"
+    }
+}
+
 #if DEBUG
-extension SampleData {
-    static let sample = [
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2023 여름", numberOfAlbums: "403"),
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2024 여름", numberOfAlbums: "403"),
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2025 여름", numberOfAlbums: "403"),
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2026 여름", numberOfAlbums: "403"),
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2027 여름", numberOfAlbums: "403"),
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2028 여름", numberOfAlbums: "403"),
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2029 여름", numberOfAlbums: "403"),
-        SampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2030 여름", numberOfAlbums: "403")
+extension GridSampleData {
+    static let gridSample = [
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2023 여름", numberOfAlbums: "403"),
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2024 여름", numberOfAlbums: "403"),
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2025 여름", numberOfAlbums: "403"),
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2026 여름", numberOfAlbums: "403"),
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2027 여름", numberOfAlbums: "403"),
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2028 여름", numberOfAlbums: "403"),
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2029 여름", numberOfAlbums: "403"),
+        GridSampleData(thumnailURL: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqOex3tCt52M2UxHfpybUkY4nBLCJj9WWEWQ&s", albumTitle: "2030 여름", numberOfAlbums: "403")
+    ]
+    
+    static let listSample = [
+        ListSampleData(type: .video, numberOfPhotos: 35),
+        ListSampleData(type: .livephoto, numberOfPhotos: 144)
     ]
 }
 
