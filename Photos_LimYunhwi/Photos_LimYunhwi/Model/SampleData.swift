@@ -20,6 +20,10 @@ struct ListSampleData: Hashable {
     enum MediaType: String {
         case video = "video"
         case livephoto = "livephoto"
+        
+        var name: String {
+            self.rawValue
+        }
     }
 }
 
