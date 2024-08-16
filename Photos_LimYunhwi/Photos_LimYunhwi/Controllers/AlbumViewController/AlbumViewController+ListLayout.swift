@@ -10,6 +10,14 @@ import UIKit
 // MARK: CollectionView Layout
 extension AlbumViewController {
     
+    enum Supplementary: String {
+        case title = "title-element-kind"
+        
+        var name: String {
+            self.rawValue
+        }
+    }
+    
     func layout() -> UICollectionViewLayout {
         let configuration = UICollectionViewCompositionalLayoutConfiguration()
         configuration.interSectionSpacing = 20
@@ -63,6 +71,7 @@ extension AlbumViewController {
     func titleBoundarySupplementaryItem() -> NSCollectionLayoutBoundarySupplementaryItem {
         let titleSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                               heightDimension: .estimated(50))
-        return NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSize, elementKind: titleElementKind, alignment: .top)
+        return NSCollectionLayoutBoundarySupplementaryItem(layoutSize: titleSize, elementKind: Supplementary.title
+            .name, alignment: .top)
     }
 }

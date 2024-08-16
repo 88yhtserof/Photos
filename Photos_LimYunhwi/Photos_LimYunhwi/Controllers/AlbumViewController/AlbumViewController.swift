@@ -9,17 +9,8 @@ import UIKit
 
 class AlbumViewController: UIViewController {
     
-    enum Supplementary: String {
-        case title = "title-element-kind"
-        
-        var name: String {
-            self.rawValue
-        }
-    }
-    
     var dataSouce: DataSource!
     var snapshot: Snapshot!
-    let titleElementKind = "title-element-kind"
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
 
@@ -62,7 +53,8 @@ private extension AlbumViewController {
             }
         })
         
-        let supplementaryRegistration = UICollectionView.SupplementaryRegistration(elementKind: titleElementKind, handler: supplementaryRegistrationHandler)
+        let supplementaryRegistration = UICollectionView.SupplementaryRegistration(elementKind: Supplementary.title
+            .name, handler: supplementaryRegistrationHandler)
         dataSouce.supplementaryViewProvider = { collectionView, kind, indexPath in
             return collectionView.dequeueConfiguredReusableSupplementary(using: supplementaryRegistration, for: indexPath)
         }
