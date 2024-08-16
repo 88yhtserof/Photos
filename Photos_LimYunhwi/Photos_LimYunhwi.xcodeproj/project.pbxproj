@@ -17,6 +17,7 @@
 		14FAC4C32C6C97820066D44F /* GridListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C22C6C97820066D44F /* GridListCell.swift */; };
 		14FAC4C52C6C97E10066D44F /* AlbumViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */; };
 		14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */; };
+		14FF07AD2C6F30AD005C142B /* AlbumViewController+ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FF07AC2C6F30AD005C142B /* AlbumViewController+ListLayout.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		14FAC4C22C6C97820066D44F /* GridListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridListCell.swift; sourceTree = "<group>"; };
 		14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+DataSource.swift"; sourceTree = "<group>"; };
 		14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
+		14FF07AC2C6F30AD005C142B /* AlbumViewController+ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+ListLayout.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 			children = (
 				14FAC49C2C6C486F0066D44F /* AlbumViewController.swift */,
 				14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */,
+				14FF07AC2C6F30AD005C142B /* AlbumViewController+ListLayout.swift */,
 			);
 			path = AlbumViewController;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */,
 				14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */,
 				14FAC4BF2C6C96A40066D44F /* SampleData.swift in Sources */,
+				14FF07AD2C6F30AD005C142B /* AlbumViewController+ListLayout.swift in Sources */,
 				14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */,
 				14FAC4B82C6C95750066D44F /* UIView+Constraints.swift in Sources */,
 				14FAC4C32C6C97820066D44F /* GridListCell.swift in Sources */,
