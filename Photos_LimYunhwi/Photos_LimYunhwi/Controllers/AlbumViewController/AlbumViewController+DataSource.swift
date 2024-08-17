@@ -71,14 +71,11 @@ extension AlbumViewController {
     
     func updateSnapshot() {
         let mediaTypes = ListSampleData.listSample.map{ Item(mediaTypes: $0) }
+        let myAlbums = fetchAssetCollectionsForMyAlbum()
+        
         snapshot = Snapshot()
         snapshot.appendSections([.myAlbum, .mediaTypes])
-        
-        if let count = userCollections?.count,
-           let collections = userCollections?.objects(at: IndexSet(0..<count)) {
-            let list = collections.map{ Item(myAlbums: $0) }
-            snapshot.appendItems(list, toSection: .myAlbum)
-        }
+        snapshot.appendItems(myAlbums, toSection: .myAlbum)
         snapshot.appendItems(mediaTypes, toSection: .mediaTypes)
         dataSouce.apply(snapshot)
     }
@@ -87,14 +84,29 @@ extension AlbumViewController {
         var items: [Item] = []
         switch section {
         case .myAlbum:
-            if let count = userCollections?.count,
-               let collections = userCollections?.objects(at: IndexSet(0..<count)) {
-                items = collections.map{ Item(myAlbums: $0) }
-            }
+            items = fetchAssetCollectionsForMyAlbum()
         case .mediaTypes:
             items = ListSampleData.listSample.map{ Item(mediaTypes: $0) }
         }
         snapshot.appendItems(items, toSection: section)
         dataSouce.apply(snapshot)
+    }
+    
+    private func fetchAssetCollectionsForMyAlbum() -> [Item] {
+        guard let recentCount = recentFetchResult?.count,
+              let recentCollections = recentFetchResult?.objects(at: IndexSet(0..<recentCount)),
+              let favoriteCount = favoriteFetchResult?.count,
+              let favoriteCollections = favoriteFetchResult?.objects(at: IndexSet(0..<favoriteCount)) else {
+            fatalError("Failed to fetch collections as UserLibrary and Favorites")
+        }
+        var items = recentCollections.map{ Item(myAlbums: $0) }
+        items.append(contentsOf: favoriteCollections.map{ Item(myAlbums: $0) })
+        
+        if let userCollectionCount = userFetchResult?.count,
+           let userCollections = userFetchResult?.objects(at: IndexSet(0..<userCollectionCount)) {
+            items.append(contentsOf: userCollections.map{ Item(myAlbums: $0) })
+        }
+        
+        return items
     }
 }

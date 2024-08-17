@@ -11,9 +11,9 @@ import Photos
 extension AlbumViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         Task { @MainActor in
-            if userCollections != nil,
-               let albumChanges = changeInstance.changeDetails(for: userCollections!) {
-                userCollections = albumChanges.fetchResultAfterChanges
+            if userFetchResult != nil,
+               let albumChanges = changeInstance.changeDetails(for: userFetchResult!) {
+                userFetchResult = albumChanges.fetchResultAfterChanges
                 updateSnapshot(to: .myAlbum)
             }
         }

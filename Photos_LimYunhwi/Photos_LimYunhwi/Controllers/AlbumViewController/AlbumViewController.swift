@@ -11,7 +11,9 @@ import Photos
 class AlbumViewController: UIViewController {
     
     var imageManager = PHImageManager()
-    var userCollections: PHFetchResult<PHCollection>?
+    var favoriteFetchResult: PHFetchResult<PHAssetCollection>?
+    var recentFetchResult: PHFetchResult<PHAssetCollection>?
+    var userFetchResult: PHFetchResult<PHAssetCollection>?
     var dataSouce: DataSource!
     var snapshot: Snapshot!
     
@@ -20,11 +22,9 @@ class AlbumViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        PHPhotoLibrary.shared().register(self)
-        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
-        
         configureSubviews()
         configureView()
+        configurePhotoLibrary()
         configureDataSource()
     }
 }
@@ -67,5 +67,13 @@ private extension AlbumViewController {
         
         updateSnapshot()
         collectionView.dataSource = dataSouce
+    }
+    
+    func configurePhotoLibrary() {
+        PHPhotoLibrary.shared().register(self)
+        
+        favoriteFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
+        recentFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
+        userFetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
     }
 }
