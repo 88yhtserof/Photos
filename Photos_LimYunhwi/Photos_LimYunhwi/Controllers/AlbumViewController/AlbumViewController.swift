@@ -6,16 +6,22 @@
 //
 
 import UIKit
+import Photos
 
 class AlbumViewController: UIViewController {
     
+    var imageManager = PHImageManager()
+    var userCollections: PHFetchResult<PHCollection>?
     var dataSouce: DataSource!
     var snapshot: Snapshot!
     
-    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        PHPhotoLibrary.shared().register(self)
+        userCollections = PHCollectionList.fetchTopLevelUserCollections(with: nil)
         
         configureSubviews()
         configureView()
@@ -47,7 +53,7 @@ private extension AlbumViewController {
             }
             switch section {
             case .myAlbum:
-                return collectionView.dequeueConfiguredReusableCell(using: myAlbumCellRegistration, for: indexPath, item: itemIdentifier)
+                return collectionView.dequeueConfiguredReusableCell(using: myAlbumCellRegistration, for: indexPath, item: itemIdentifier.myAlbums)
             case .mediaTypes:
                 return collectionView.dequeueConfiguredReusableCell(using: mediaTypesCellRegistration, for: indexPath, item: itemIdentifier.mediaTypes)
             }

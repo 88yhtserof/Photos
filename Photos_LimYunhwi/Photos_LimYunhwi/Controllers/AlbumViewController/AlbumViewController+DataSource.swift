@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Photos
 
 extension AlbumViewController {
     enum Section: Int {
@@ -24,10 +25,10 @@ extension AlbumViewController {
     }
     
     struct Item: Hashable {
-        let myAlbums: GridSampleData? //임시
+        let myAlbums: PHCollection?
         let mediaTypes: ListSampleData?
         
-        init(myAlbums: GridSampleData? = nil, mediaTypes: ListSampleData? = nil) {
+        init(myAlbums: PHCollection? = nil, mediaTypes: ListSampleData? = nil) {
             self.myAlbums = myAlbums
             self.mediaTypes = mediaTypes
         }
@@ -38,13 +39,20 @@ extension AlbumViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    func myAlbumCellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: Item) {
-        Task {
-            let image = try await ImageLoader.loadImage(from: URL(string: item.myAlbums!.thumnailURL)!)
-            cell.thumbnailImage = image
-            cell.text = item.myAlbums!.albumTitle
-            cell.secondaryText = item.myAlbums!.numberOfAlbums
+    func myAlbumCellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: PHCollection) {
+        let fetchResult = PHAsset.fetchAssets(in: item as! PHAssetCollection, options: nil)
+        let size = CGSize(width: 100, height: 100)
+        if let asset = fetchResult.firstObject {
+            imageManager.requestImage(for: asset,
+                                      targetSize: size,
+                                      contentMode: .aspectFit,
+                                      options: nil, 
+                                      resultHandler: { image, _ in
+                cell.thumbnailImage = image
+            })
         }
+        cell.text = item.localizedTitle
+        cell.secondaryText = String(fetchResult.count)
     }
     
     func mediaTypesCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: ListSampleData) {
@@ -62,13 +70,31 @@ extension AlbumViewController {
     }
     
     func updateSnapshot() {
-        let list = GridSampleData.gridSample.map{ Item(myAlbums: $0) }
         let mediaTypes = ListSampleData.listSample.map{ Item(mediaTypes: $0) }
         snapshot = Snapshot()
         snapshot.appendSections([.myAlbum, .mediaTypes])
-        snapshot.appendItems(list, toSection: .myAlbum)
+        
+        if let count = userCollections?.count,
+           let collections = userCollections?.objects(at: IndexSet(0..<count)) {
+            let list = collections.map{ Item(myAlbums: $0) }
+            snapshot.appendItems(list, toSection: .myAlbum)
+        }
         snapshot.appendItems(mediaTypes, toSection: .mediaTypes)
         dataSouce.apply(snapshot)
-        
+    }
+    
+    func updateSnapshot(to section: Section) {
+        var items: [Item] = []
+        switch section {
+        case .myAlbum:
+            if let count = userCollections?.count,
+               let collections = userCollections?.objects(at: IndexSet(0..<count)) {
+                items = collections.map{ Item(myAlbums: $0) }
+            }
+        case .mediaTypes:
+            items = ListSampleData.listSample.map{ Item(mediaTypes: $0) }
+        }
+        snapshot.appendItems(items, toSection: section)
+        dataSouce.apply(snapshot)
     }
 }
