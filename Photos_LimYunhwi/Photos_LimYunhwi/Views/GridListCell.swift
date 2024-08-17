@@ -8,7 +8,7 @@
 import UIKit
 
 class GridListCell: UICollectionViewCell {
-    var thumbnailImage: UIImage! {
+    var thumbnailImage: UIImage? {
         didSet {
             imageView.image = thumbnailImage
         }
@@ -46,6 +46,7 @@ private extension GridListCell {
     func configureSubviews() {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
+        imageView.backgroundColor = .systemGray6
         
         textLabel.font = .systemFont(ofSize: 15, weight: .regular)
         secondaryTextLabel.font = .systemFont(ofSize: 15, weight: .thin)
