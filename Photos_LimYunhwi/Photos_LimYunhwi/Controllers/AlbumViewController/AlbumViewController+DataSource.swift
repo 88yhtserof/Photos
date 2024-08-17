@@ -45,8 +45,8 @@ extension AlbumViewController {
         if let asset = fetchResult.firstObject {
             imageManager.requestImage(for: asset,
                                       targetSize: size,
-                                      contentMode: .aspectFit,
-                                      options: nil, 
+                                      contentMode: .aspectFill,
+                                      options: nil,
                                       resultHandler: { image, _ in
                 cell.thumbnailImage = image
             })
