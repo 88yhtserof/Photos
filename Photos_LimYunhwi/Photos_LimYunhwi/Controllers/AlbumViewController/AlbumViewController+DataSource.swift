@@ -41,10 +41,14 @@ extension AlbumViewController {
     
     func myAlbumCellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: PHCollection) {
         let fetchResult = PHAsset.fetchAssets(in: item as! PHAssetCollection, options: nil)
-        let size = CGSize(width: 100, height: 100)
+        
+        // TODO: - size 초기화 위치 변경
+        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
+        let thumbnailSize = CGSize(width: itemWidth, height: itemWidth)
+        
         if let asset = fetchResult.firstObject {
             imageManager.requestImage(for: asset,
-                                      targetSize: size,
+                                      targetSize: thumbnailSize,
                                       contentMode: .aspectFill,
                                       options: nil,
                                       resultHandler: { image, _ in
