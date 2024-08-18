@@ -13,7 +13,6 @@
 		14FAC4A22C6C48700066D44F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 14FAC4A12C6C48700066D44F /* Assets.xcassets */; };
 		14FAC4A52C6C48700066D44F /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 14FAC4A42C6C48700066D44F /* Base */; };
 		14FAC4B82C6C95750066D44F /* UIView+Constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */; };
-		14FAC4BF2C6C96A40066D44F /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4BE2C6C96A40066D44F /* SampleData.swift */; };
 		14FAC4C32C6C97820066D44F /* GridListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C22C6C97820066D44F /* GridListCell.swift */; };
 		14FAC4C52C6C97E10066D44F /* AlbumViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */; };
 		14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */; };
@@ -30,7 +29,6 @@
 		14FAC4A42C6C48700066D44F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		14FAC4A62C6C48700066D44F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Constraints.swift"; sourceTree = "<group>"; };
-		14FAC4BE2C6C96A40066D44F /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		14FAC4C22C6C97820066D44F /* GridListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridListCell.swift; sourceTree = "<group>"; };
 		14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+DataSource.swift"; sourceTree = "<group>"; };
 		14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleSupplementaryView.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 		14FAC4BD2C6C96910066D44F /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				14FAC4BE2C6C96A40066D44F /* SampleData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -191,7 +188,6 @@
 				14FAC4C52C6C97E10066D44F /* AlbumViewController+DataSource.swift in Sources */,
 				14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */,
 				14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */,
-				14FAC4BF2C6C96A40066D44F /* SampleData.swift in Sources */,
 				14FF07AF2C705D76005C142B /* AlbumViewController+PHPhotoLibrary.swift in Sources */,
 				14FF07AD2C6F30AD005C142B /* AlbumViewController+ListLayout.swift in Sources */,
 				14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */,
