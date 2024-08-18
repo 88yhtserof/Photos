@@ -61,6 +61,15 @@
 			path = PhotoListViewController;
 			sourceTree = "<group>";
 		};
+		141CDA652C7212BC0097B064 /* ListCell */ = {
+			isa = PBXGroup;
+			children = (
+				14FAC4C22C6C97820066D44F /* GridTextListCell.swift */,
+				141CDA632C7210CE0097B064 /* GridImageListCell.swift */,
+			);
+			path = ListCell;
+			sourceTree = "<group>";
+		};
 		14FAC48C2C6C486F0066D44F = {
 			isa = PBXGroup;
 			children = (
@@ -94,10 +103,9 @@
 		14FAC4B62C6C95640066D44F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				141CDA652C7212BC0097B064 /* ListCell */,
 				14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */,
-				14FAC4C22C6C97820066D44F /* GridTextListCell.swift */,
 				14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */,
-				141CDA632C7210CE0097B064 /* GridImageListCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
