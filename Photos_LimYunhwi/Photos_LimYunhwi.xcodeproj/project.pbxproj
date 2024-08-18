@@ -51,6 +51,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		141CDA602C720E660097B064 /* PhotoListViewController */ = {
+			isa = PBXGroup;
+			children = (
+				141CDA5E2C7207DF0097B064 /* PhotoListViewController.swift */,
+			);
+			path = PhotoListViewController;
+			sourceTree = "<group>";
+		};
 		14FAC48C2C6C486F0066D44F = {
 			isa = PBXGroup;
 			children = (
@@ -107,7 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				14FAC4B92C6C95E40066D44F /* AlbumListViewController */,
-				141CDA5E2C7207DF0097B064 /* PhotoListViewController.swift */,
+				141CDA602C720E660097B064 /* PhotoListViewController */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
