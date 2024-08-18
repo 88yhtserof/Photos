@@ -26,11 +26,25 @@ extension AlbumViewController {
     
     struct Item: Hashable {
         let myAlbums: PHAssetCollection?
-        let mediaTypes: ListSampleData?
+        let mediaTypes: PHAssetCollection?
         
-        init(myAlbums: PHAssetCollection? = nil, mediaTypes: ListSampleData? = nil) {
+        init(myAlbums: PHAssetCollection? = nil, mediaTypes: PHAssetCollection? = nil) {
             self.myAlbums = myAlbums
             self.mediaTypes = mediaTypes
+        }
+    }
+    
+    enum MediaTypeImage: String {
+        case livephoto = "Live Photos"
+        case selfie = "Selfies"
+        
+        var name: String {
+            switch self {
+            case .livephoto:
+                return "livephoto"
+            case .selfie:
+                return "person.crop.square"
+            }
         }
     }
 }
@@ -59,11 +73,15 @@ extension AlbumViewController {
         cell.secondaryText = String(fetchResult.count)
     }
     
-    func mediaTypesCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: ListSampleData) {
+    func mediaTypesCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: PHAssetCollection) {
+        let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
+        let albumTitle = item.localizedTitle ?? ""
+        let imageName = MediaTypeImage(rawValue: albumTitle)?.name ?? ""
+        
         var configuration = UIListContentConfiguration.valueCell()
-        configuration.image = UIImage(systemName: item.type.name)
-        configuration.text = item.type.name
-        configuration.secondaryText = String(item.numberOfPhotos)
+        configuration.image = UIImage(systemName: imageName)
+        configuration.text = albumTitle
+        configuration.secondaryText = String(fetchResult.count)
         
         cell.contentConfiguration = configuration
         cell.accessories = [.disclosureIndicator()]
@@ -74,7 +92,7 @@ extension AlbumViewController {
     }
     
     func updateSnapshot() {
-        let mediaTypes = ListSampleData.listSample.map{ Item(mediaTypes: $0) }
+        let mediaTypes = fetchAssetCollectionsForMediaTypes()
         let myAlbums = fetchAssetCollectionsForMyAlbum()
         
         snapshot = Snapshot()
@@ -90,7 +108,7 @@ extension AlbumViewController {
         case .myAlbum:
             items = fetchAssetCollectionsForMyAlbum()
         case .mediaTypes:
-            items = ListSampleData.listSample.map{ Item(mediaTypes: $0) }
+            items = fetchAssetCollectionsForMediaTypes()
         }
         snapshot.appendItems(items, toSection: section)
         dataSouce.apply(snapshot)
@@ -110,6 +128,17 @@ extension AlbumViewController {
            let userCollections = userFetchResult?.objects(at: IndexSet(0..<userCollectionCount)) {
             items.append(contentsOf: userCollections.map{ Item(myAlbums: $0) })
         }
+        
+        return items
+    }
+    
+    private func fetchAssetCollectionsForMediaTypes() -> [Item] {
+        guard let livephotoAssetCollection = livephotoFetchResult?.firstObject,
+              let selfieAssetCollection = selfieFetchResult?.firstObject else {
+            fatalError("Failed to fetch collections as LivePhoto and SelfPortraits")
+        }
+        let mediaTypes = [ livephotoAssetCollection, selfieAssetCollection ]
+        let items = mediaTypes.map{ Item(mediaTypes: $0) }
         
         return items
     }

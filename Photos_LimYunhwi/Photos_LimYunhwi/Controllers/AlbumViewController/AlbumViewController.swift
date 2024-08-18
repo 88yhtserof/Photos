@@ -13,6 +13,8 @@ class AlbumViewController: UIViewController {
     var imageManager = PHImageManager()
     var favoriteFetchResult: PHFetchResult<PHAssetCollection>?
     var recentFetchResult: PHFetchResult<PHAssetCollection>?
+    var livephotoFetchResult: PHFetchResult<PHAssetCollection>?
+    var selfieFetchResult: PHFetchResult<PHAssetCollection>?
     var userFetchResult: PHFetchResult<PHAssetCollection>?
     var dataSouce: DataSource!
     var snapshot: Snapshot!
@@ -75,5 +77,7 @@ private extension AlbumViewController {
         favoriteFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumFavorites, options: nil)
         recentFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumUserLibrary, options: nil)
         userFetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
+        livephotoFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumLivePhotos, options: nil)
+        selfieFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
     }
 }
