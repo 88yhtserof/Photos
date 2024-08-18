@@ -92,54 +92,57 @@ extension AlbumViewController {
     }
     
     func updateSnapshot() {
-        let mediaTypes = fetchAssetCollectionsForMediaTypes()
         let myAlbums = fetchAssetCollectionsForMyAlbum()
+        let myAlbumItems = myAlbums.map{ Item(myAlbums: $0) }
+        let mediaTypes = fetchAssetCollectionsForMediaTypes()
+        let mediaTypeItems = mediaTypes.map{ Item(mediaTypes: $0) }
         
         snapshot = Snapshot()
         snapshot.appendSections([.myAlbum, .mediaTypes])
-        snapshot.appendItems(myAlbums, toSection: .myAlbum)
-        snapshot.appendItems(mediaTypes, toSection: .mediaTypes)
+        snapshot.appendItems(myAlbumItems, toSection: .myAlbum)
+        snapshot.appendItems(mediaTypeItems, toSection: .mediaTypes)
         dataSouce.apply(snapshot)
     }
     
     func updateSnapshot(to section: Section) {
         var items: [Item] = []
+        
         switch section {
         case .myAlbum:
-            items = fetchAssetCollectionsForMyAlbum()
+            let myAlbums = fetchAssetCollectionsForMyAlbum()
+            items = myAlbums.map{ Item(myAlbums: $0) }
         case .mediaTypes:
-            items = fetchAssetCollectionsForMediaTypes()
+            let mediaTypes = fetchAssetCollectionsForMediaTypes()
+            items = mediaTypes.map{ Item(mediaTypes: $0) }
         }
         snapshot.appendItems(items, toSection: section)
         dataSouce.apply(snapshot)
     }
     
-    private func fetchAssetCollectionsForMyAlbum() -> [Item] {
+    func fetchAssetCollectionsForMyAlbum() -> [PHAssetCollection] {
         guard let recentCount = recentFetchResult?.count,
               let recentCollections = recentFetchResult?.objects(at: IndexSet(0..<recentCount)),
               let favoriteCount = favoriteFetchResult?.count,
               let favoriteCollections = favoriteFetchResult?.objects(at: IndexSet(0..<favoriteCount)) else {
             fatalError("Failed to fetch collections as UserLibrary and Favorites")
         }
-        var items = recentCollections.map{ Item(myAlbums: $0) }
-        items.append(contentsOf: favoriteCollections.map{ Item(myAlbums: $0) })
+        var myAlbums = recentCollections
+        myAlbums.append(contentsOf: favoriteCollections)
         
         if let userCollectionCount = userFetchResult?.count,
            let userCollections = userFetchResult?.objects(at: IndexSet(0..<userCollectionCount)) {
-            items.append(contentsOf: userCollections.map{ Item(myAlbums: $0) })
+            myAlbums.append(contentsOf: userCollections)
         }
         
-        return items
+        return myAlbums
     }
     
-    private func fetchAssetCollectionsForMediaTypes() -> [Item] {
+    func fetchAssetCollectionsForMediaTypes() -> [PHAssetCollection] {
         guard let livephotoAssetCollection = livephotoFetchResult?.firstObject,
               let selfieAssetCollection = selfieFetchResult?.firstObject else {
             fatalError("Failed to fetch collections as LivePhoto and SelfPortraits")
         }
         let mediaTypes = [ livephotoAssetCollection, selfieAssetCollection ]
-        let items = mediaTypes.map{ Item(mediaTypes: $0) }
-        
-        return items
+        return mediaTypes
     }
 }

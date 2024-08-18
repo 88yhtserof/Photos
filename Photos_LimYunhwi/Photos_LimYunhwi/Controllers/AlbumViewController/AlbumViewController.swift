@@ -35,6 +35,7 @@ class AlbumViewController: UIViewController {
 private extension AlbumViewController {
     func configureSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 20, right: -10)
+        collectionView.delegate = self
     }
     
     func configureView() {

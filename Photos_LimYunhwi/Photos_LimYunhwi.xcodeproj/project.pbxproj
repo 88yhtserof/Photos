@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		141CDA5C2C71F3230097B064 /* AlbumViewController+CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA5B2C71F3230097B064 /* AlbumViewController+CollectionViewDelegate.swift */; };
 		14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4982C6C486F0066D44F /* AppDelegate.swift */; };
 		14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */; };
 		14FAC49D2C6C486F0066D44F /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49C2C6C486F0066D44F /* AlbumViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		141CDA5B2C71F3230097B064 /* AlbumViewController+CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlbumViewController+CollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		14FAC4952C6C486F0066D44F /* Photos_LimYunhwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photos_LimYunhwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FAC4982C6C486F0066D44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 			children = (
 				14FAC49C2C6C486F0066D44F /* AlbumViewController.swift */,
 				14FAC4C42C6C97E10066D44F /* AlbumViewController+DataSource.swift */,
+				141CDA5B2C71F3230097B064 /* AlbumViewController+CollectionViewDelegate.swift */,
 				14FF07AC2C6F30AD005C142B /* AlbumViewController+ListLayout.swift */,
 				14FF07AE2C705D76005C142B /* AlbumViewController+PHPhotoLibrary.swift */,
 			);
@@ -184,6 +187,7 @@
 				14FF07AD2C6F30AD005C142B /* AlbumViewController+ListLayout.swift in Sources */,
 				14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */,
 				14FAC4B82C6C95750066D44F /* UIView+Constraints.swift in Sources */,
+				141CDA5C2C71F3230097B064 /* AlbumViewController+CollectionViewDelegate.swift in Sources */,
 				14FAC4C32C6C97820066D44F /* GridListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
