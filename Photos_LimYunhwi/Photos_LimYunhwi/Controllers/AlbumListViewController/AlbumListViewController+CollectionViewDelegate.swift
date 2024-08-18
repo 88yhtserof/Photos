@@ -1,5 +1,5 @@
 //
-//  AlbumViewController+CollectionViewDelegate.swift
+//  AlbumListViewController+CollectionViewDelegate.swift
 //  Photos_LimYunhwi
 //
 //  Created by 임윤휘 on 8/18/24.
@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-extension AlbumViewController: UICollectionViewDelegate {
+extension AlbumListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let section = Section(rawValue: indexPath.section) else {

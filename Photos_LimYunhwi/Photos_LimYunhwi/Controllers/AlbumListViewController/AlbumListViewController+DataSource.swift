@@ -1,5 +1,5 @@
 //
-//  AlbumViewController+DataSource.swift
+//  AlbumListViewController+DataSource.swift
 //  Photos_LimYunhwi
 //
 //  Created by 임윤휘 on 8/14/24.
@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-extension AlbumViewController {
+extension AlbumListViewController {
     enum Section: Int {
         
         case myAlbum
@@ -35,7 +35,7 @@ extension AlbumViewController {
     }
 }
 
-extension AlbumViewController {
+extension AlbumListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     

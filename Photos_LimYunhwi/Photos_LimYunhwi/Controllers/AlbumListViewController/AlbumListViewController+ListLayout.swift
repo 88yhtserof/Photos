@@ -1,5 +1,5 @@
 //
-//  AlbumViewController+ListLayout.swift
+//  AlbumListViewController+ListLayout.swift
 //  Photos_LimYunhwi
 //
 //  Created by 임윤휘 on 8/16/24.
@@ -8,7 +8,7 @@
 import UIKit
 
 // MARK: CollectionView Layout
-extension AlbumViewController {
+extension AlbumListViewController {
     
     enum Supplementary: String {
         case title = "title-element-kind"

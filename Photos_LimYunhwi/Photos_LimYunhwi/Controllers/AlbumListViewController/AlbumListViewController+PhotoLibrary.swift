@@ -1,5 +1,5 @@
 //
-//  AlbumViewController+PhotoLibrary.swift
+//  AlbumListViewController+PhotoLibrary.swift
 //  Photos_LimYunhwi
 //
 //  Created by 임윤휘 on 8/17/24.
@@ -9,7 +9,7 @@ import Foundation
 import Photos
 
 //MARK: PhotoLibraryChangeObserver
-extension AlbumViewController: PHPhotoLibraryChangeObserver {
+extension AlbumListViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         Task { @MainActor in
             if userFetchResult != nil,
@@ -22,7 +22,7 @@ extension AlbumViewController: PHPhotoLibraryChangeObserver {
 }
 
 //MARK: Photo Library
-extension AlbumViewController {
+extension AlbumListViewController {
     
     enum MediaTypeImage: String {
         case livephoto = "Live Photos"

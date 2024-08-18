@@ -1,5 +1,5 @@
 //
-//  AlbumViewController.swift
+//  AlbumListViewController.swift
 //  Photos_LimYunhwi
 //
 //  Created by 임윤휘 on 8/14/24.
@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class AlbumViewController: UIViewController {
+class AlbumListViewController: UIViewController {
     
     var imageManager = PHImageManager()
     var favoriteFetchResult: PHFetchResult<PHAssetCollection>?
@@ -32,7 +32,7 @@ class AlbumViewController: UIViewController {
 }
 
 // MARK: Configuration
-private extension AlbumViewController {
+private extension AlbumListViewController {
     func configureSubviews() {
         collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 20, right: -10)
         collectionView.delegate = self
