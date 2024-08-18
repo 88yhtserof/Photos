@@ -39,7 +39,7 @@ extension AlbumListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    func myAlbumCellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: PHAssetCollection) {
+    func myAlbumCellRegistrationHandler(cell: GridTextListCell, indexPath: IndexPath, item: PHAssetCollection) {
         let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
         
         // TODO: - size 초기화 위치 변경

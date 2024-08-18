@@ -1,5 +1,5 @@
 //
-//  GridListCell.swift
+//  GridTextListCell.swift
 //  Photos_LimYunhwi
 //
 //  Created by 임윤휘 on 8/14/24.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GridListCell: UICollectionViewCell {
+class GridTextListCell: UICollectionViewCell {
     var thumbnailImage: UIImage? {
         didSet {
             imageView.image = thumbnailImage
@@ -42,7 +42,7 @@ class GridListCell: UICollectionViewCell {
 }
 
 // MARK: Configuration
-private extension GridListCell {
+private extension GridTextListCell {
     func configureSubviews() {
         imageView.contentMode = .scaleAspectFill
         imageView.clipsToBounds = true
