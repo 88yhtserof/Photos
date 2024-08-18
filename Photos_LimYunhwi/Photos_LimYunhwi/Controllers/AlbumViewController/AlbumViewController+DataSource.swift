@@ -25,10 +25,10 @@ extension AlbumViewController {
     }
     
     struct Item: Hashable {
-        let myAlbums: PHCollection?
+        let myAlbums: PHAssetCollection?
         let mediaTypes: ListSampleData?
         
-        init(myAlbums: PHCollection? = nil, mediaTypes: ListSampleData? = nil) {
+        init(myAlbums: PHAssetCollection? = nil, mediaTypes: ListSampleData? = nil) {
             self.myAlbums = myAlbums
             self.mediaTypes = mediaTypes
         }
@@ -39,8 +39,8 @@ extension AlbumViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>
     
-    func myAlbumCellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: PHCollection) {
-        let fetchResult = PHAsset.fetchAssets(in: item as! PHAssetCollection, options: nil)
+    func myAlbumCellRegistrationHandler(cell: GridListCell, indexPath: IndexPath, item: PHAssetCollection) {
+        let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
         
         // TODO: - size 초기화 위치 변경
         let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
