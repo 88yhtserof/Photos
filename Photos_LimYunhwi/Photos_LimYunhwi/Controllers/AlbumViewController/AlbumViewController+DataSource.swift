@@ -33,20 +33,6 @@ extension AlbumViewController {
             self.mediaTypes = mediaTypes
         }
     }
-    
-    enum MediaTypeImage: String {
-        case livephoto = "Live Photos"
-        case selfie = "Selfies"
-        
-        var name: String {
-            switch self {
-            case .livephoto:
-                return "livephoto"
-            case .selfie:
-                return "person.crop.square"
-            }
-        }
-    }
 }
 
 extension AlbumViewController {
@@ -117,32 +103,5 @@ extension AlbumViewController {
         }
         snapshot.appendItems(items, toSection: section)
         dataSouce.apply(snapshot)
-    }
-    
-    func fetchAssetCollectionsForMyAlbum() -> [PHAssetCollection] {
-        guard let recentCount = recentFetchResult?.count,
-              let recentCollections = recentFetchResult?.objects(at: IndexSet(0..<recentCount)),
-              let favoriteCount = favoriteFetchResult?.count,
-              let favoriteCollections = favoriteFetchResult?.objects(at: IndexSet(0..<favoriteCount)) else {
-            fatalError("Failed to fetch collections as UserLibrary and Favorites")
-        }
-        var myAlbums = recentCollections
-        myAlbums.append(contentsOf: favoriteCollections)
-        
-        if let userCollectionCount = userFetchResult?.count,
-           let userCollections = userFetchResult?.objects(at: IndexSet(0..<userCollectionCount)) {
-            myAlbums.append(contentsOf: userCollections)
-        }
-        
-        return myAlbums
-    }
-    
-    func fetchAssetCollectionsForMediaTypes() -> [PHAssetCollection] {
-        guard let livephotoAssetCollection = livephotoFetchResult?.firstObject,
-              let selfieAssetCollection = selfieFetchResult?.firstObject else {
-            fatalError("Failed to fetch collections as LivePhoto and SelfPortraits")
-        }
-        let mediaTypes = [ livephotoAssetCollection, selfieAssetCollection ]
-        return mediaTypes
     }
 }
