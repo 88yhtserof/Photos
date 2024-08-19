@@ -15,6 +15,7 @@ class PhotoListViewController: UIViewController {
     let albumTitle: String?
     var dataSource: DataSource!
     var snapshot: Snapshot!
+    var photoSize: CGSize!
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
@@ -36,6 +37,14 @@ class PhotoListViewController: UIViewController {
         configureConstratins()
         configurePhotoLibrary()
         configureDataSource()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let scale = view.window?.screen.scale ?? 1.0
+        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
+        photoSize = CGSize(width: itemWidth * scale, height: itemWidth * scale)
     }
     
     override func viewDidLayoutSubviews() {
