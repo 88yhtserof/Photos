@@ -42,9 +42,6 @@ extension AlbumListViewController {
     func myAlbumCellRegistrationHandler(cell: GridTextListCell, indexPath: IndexPath, item: PHAssetCollection) {
         let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
         
-        // TODO: - size 초기화 위치 변경
-        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
-        let thumbnailSize = CGSize(width: itemWidth, height: itemWidth)
         
         if let asset = fetchResult.lastObject {
             cell.assetIdentifier = asset.localIdentifier

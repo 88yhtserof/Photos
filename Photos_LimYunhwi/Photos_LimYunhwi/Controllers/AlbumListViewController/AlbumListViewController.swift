@@ -18,6 +18,7 @@ class AlbumListViewController: UIViewController {
     var userFetchResult: PHFetchResult<PHAssetCollection>?
     var dataSouce: DataSource!
     var snapshot: Snapshot!
+    var thumbnailSize: CGSize!
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
 
@@ -28,6 +29,14 @@ class AlbumListViewController: UIViewController {
         configureView()
         configurePhotoLibrary()
         configureDataSource()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let scale = view.window?.screen.scale ?? 1.0
+        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
+        thumbnailSize = CGSize(width: itemWidth * scale, height: itemWidth * scale)
     }
 }
 
