@@ -11,6 +11,9 @@ import Photos
 class PhotoViewController: UIViewController {
     var asset: PHAsset
     
+    lazy var imageView = UIImageView()
+    lazy var progressView = UIProgressView()
+    
     init(asset: PHAsset) {
         self.asset = asset
         
@@ -23,6 +26,31 @@ class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        configureSubviews()
+        configureView()
+        configureConstraints()
+    }
+}
+
+private extension PhotoViewController {
+    
+    func configureSubviews() {
+        imageView.contentMode = .scaleAspectFit
+    }
+    
+    func configureView() {
         view.backgroundColor = .white
+    }
+    
+    func configureConstraints() {
+        view.addPinnedSubview(imageView, height: nil)
+        view.addSubviews([progressView])
+        
+        NSLayoutConstraint.activate([
+            progressView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            progressView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            progressView.widthAnchor.constraint(equalToConstant: 100)
+        ])
     }
 }
