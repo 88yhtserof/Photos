@@ -10,7 +10,7 @@ import UIKit
 extension PhotoListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let asset = fetchResult.object(at: indexPath.row)
-        print("Select", asset)
-        
+        let photoVC = PhotoViewController(asset: asset)
+        navigationController?.pushViewController(photoVC, animated: true)
     }
 }
