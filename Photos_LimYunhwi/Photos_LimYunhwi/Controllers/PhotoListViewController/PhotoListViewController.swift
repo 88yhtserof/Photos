@@ -39,11 +39,12 @@ class PhotoListViewController: UIViewController {
 //MARK: Configuration
 private extension PhotoListViewController {
     func configureSubviews() {
-        collectionView.contentInset = UIEdgeInsets(top: 10, left: 10, bottom: 20, right: -10)
+        
     }
     
     func configureView() {
         view.backgroundColor = .white
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     func configureConstratins() {
@@ -69,7 +70,9 @@ extension PhotoListViewController {
         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+        group.interItemSpacing = .flexible(3)
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = 3
         let layout = UICollectionViewCompositionalLayout(section: section)
         
         return layout
