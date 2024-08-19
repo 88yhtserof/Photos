@@ -29,10 +29,14 @@ extension PhotoListViewController {
         }
     }
     
+    func createSnapshot() {
+        snapshot = Snapshot()
+        snapshot.appendSections([0])
+        updateSnapshot()
+    }
+    
     func updateSnapshot() {
         let items = fetchResult.objects(at: IndexSet(0..<fetchResult.count))
-        var snapshot = Snapshot()
-        snapshot.appendSections([0])
         snapshot.appendItems(items)
         dataSource.apply(snapshot)
     }

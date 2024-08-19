@@ -13,6 +13,7 @@ class PhotoListViewController: UIViewController {
     let imageManager = PHImageManager()
     var fetchResult: PHFetchResult<PHAsset>
     var dataSource: DataSource!
+    var snapshot: Snapshot!
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
@@ -32,6 +33,7 @@ class PhotoListViewController: UIViewController {
         configureSubviews()
         configureView()
         configureConstratins()
+        configurePhotoLibrary()
         configureDataSource()
     }
     
@@ -64,8 +66,12 @@ private extension PhotoListViewController {
             return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
         })
         
-        updateSnapshot()
+        createSnapshot()
         collectionView.dataSource = dataSource
+    }
+    
+    func configurePhotoLibrary() {
+        PHPhotoLibrary.shared().register(self)
     }
 }
 
