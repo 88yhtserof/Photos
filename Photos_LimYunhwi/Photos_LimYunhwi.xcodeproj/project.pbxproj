@@ -11,6 +11,7 @@
 		141CDA5F2C7207DF0097B064 /* PhotoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA5E2C7207DF0097B064 /* PhotoListViewController.swift */; };
 		141CDA642C7210CE0097B064 /* GridImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA632C7210CE0097B064 /* GridImageListCell.swift */; };
 		141CDA672C7212FB0097B064 /* PhotoListViewController+DataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA662C7212FB0097B064 /* PhotoListViewController+DataSource.swift */; };
+		141CDA692C7324A20097B064 /* PhotoListViewController+CollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA682C7324A20097B064 /* PhotoListViewController+CollectionViewDelegate.swift */; };
 		14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4982C6C486F0066D44F /* AppDelegate.swift */; };
 		14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */; };
 		14FAC49D2C6C486F0066D44F /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49C2C6C486F0066D44F /* AlbumListViewController.swift */; };
@@ -29,6 +30,7 @@
 		141CDA5E2C7207DF0097B064 /* PhotoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoListViewController.swift; sourceTree = "<group>"; };
 		141CDA632C7210CE0097B064 /* GridImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridImageListCell.swift; sourceTree = "<group>"; };
 		141CDA662C7212FB0097B064 /* PhotoListViewController+DataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoListViewController+DataSource.swift"; sourceTree = "<group>"; };
+		141CDA682C7324A20097B064 /* PhotoListViewController+CollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoListViewController+CollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		14FAC4952C6C486F0066D44F /* Photos_LimYunhwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photos_LimYunhwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FAC4982C6C486F0066D44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 			children = (
 				141CDA5E2C7207DF0097B064 /* PhotoListViewController.swift */,
 				141CDA662C7212FB0097B064 /* PhotoListViewController+DataSource.swift */,
+				141CDA682C7324A20097B064 /* PhotoListViewController+CollectionViewDelegate.swift */,
 			);
 			path = PhotoListViewController;
 			sourceTree = "<group>";
@@ -213,6 +216,7 @@
 				14FF07AD2C6F30AD005C142B /* AlbumListViewController+ListLayout.swift in Sources */,
 				14FAC4C82C6CA2CB0066D44F /* TitleSupplementaryView.swift in Sources */,
 				14FAC4B82C6C95750066D44F /* UIView+Constraints.swift in Sources */,
+				141CDA692C7324A20097B064 /* PhotoListViewController+CollectionViewDelegate.swift in Sources */,
 				141CDA5F2C7207DF0097B064 /* PhotoListViewController.swift in Sources */,
 				141CDA5C2C71F3230097B064 /* AlbumListViewController+CollectionViewDelegate.swift in Sources */,
 				14FAC4C32C6C97820066D44F /* GridTextListCell.swift in Sources */,

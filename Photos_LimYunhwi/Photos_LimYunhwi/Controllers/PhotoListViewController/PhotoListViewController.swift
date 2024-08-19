@@ -45,7 +45,7 @@ class PhotoListViewController: UIViewController {
 //MARK: Configuration
 private extension PhotoListViewController {
     func configureSubviews() {
-        
+        collectionView.delegate = self
     }
     
     func configureView() {
