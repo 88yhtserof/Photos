@@ -27,9 +27,7 @@ extension PhotoListViewController {
     }
     
     func updateSnapshot() {
-        let fetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
         let items = fetchResult.objects(at: IndexSet(0..<fetchResult.count))
-        
         var snapshot = Snapshot()
         snapshot.appendSections([0])
         snapshot.appendItems(items)

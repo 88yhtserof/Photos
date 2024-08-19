@@ -11,13 +11,13 @@ import Photos
 class PhotoListViewController: UIViewController {
     
     let imageManager = PHImageManager()
-    var assetCollection: PHAssetCollection
+    var fetchResult: PHFetchResult<PHAsset>
     var dataSource: DataSource!
     
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
     init(assetCollection: PHAssetCollection) {
-        self.assetCollection = assetCollection
+        self.fetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
         
         super.init(nibName: nil, bundle: nil)
     }
@@ -33,6 +33,12 @@ class PhotoListViewController: UIViewController {
         configureView()
         configureConstratins()
         configureDataSource()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        collectionView.scrollToItem(at: IndexPath(row: fetchResult.count - 1, section: 0), at: .bottom, animated: false)
     }
 }
 
