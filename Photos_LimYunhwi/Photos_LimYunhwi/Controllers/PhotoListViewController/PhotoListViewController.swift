@@ -10,7 +10,10 @@ import Photos
 
 class PhotoListViewController: UIViewController {
     
+    let imageManager = PHImageManager()
     var assetCollection: PHAssetCollection
+    var dataSource: DataSource!
+    
     lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
     init(assetCollection: PHAssetCollection) {
@@ -29,6 +32,7 @@ class PhotoListViewController: UIViewController {
         configureSubviews()
         configureView()
         configureConstratins()
+        configureDataSource()
     }
 }
 
@@ -44,6 +48,17 @@ private extension PhotoListViewController {
     
     func configureConstratins() {
         view.addPinnedSubview(collectionView, height: nil)
+    }
+    
+    func configureDataSource() {
+        let cellRegistration = UICollectionView.CellRegistration(handler: cellRegistraionHandler)
+        
+        dataSource = DataSource(collectionView: collectionView, cellProvider: { collectionView, indexPath, itemIdentifier in
+            return collectionView.dequeueConfiguredReusableCell(using: cellRegistration, for: indexPath, item: itemIdentifier)
+        })
+        
+        updateSnapshot()
+        collectionView.dataSource = dataSource
     }
 }
 
