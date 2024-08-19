@@ -18,11 +18,14 @@ extension PhotoListViewController {
         let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
         let size = CGSize(width: itemWidth, height: itemWidth)
         
-        imageManager.requestImage(for: item, 
+        cell.assetIdentifier = item.localIdentifier
+        imageManager.requestImage(for: item,
                                   targetSize: size,
                                   contentMode: .aspectFill,
                                   options: nil) { image, _ in
-            cell.image = image
+            if cell.assetIdentifier == item.localIdentifier {
+                cell.image = image
+            }
         }
     }
     

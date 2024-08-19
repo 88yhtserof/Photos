@@ -9,7 +9,9 @@ import UIKit
 
 class GridImageListCell: UICollectionViewCell {
     
-    var image: UIImage! {
+    var assetIdentifier: String?
+    
+    var image: UIImage? {
         didSet {
             imageView.image = image
         }
@@ -26,6 +28,11 @@ class GridImageListCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
     }
 }
 
