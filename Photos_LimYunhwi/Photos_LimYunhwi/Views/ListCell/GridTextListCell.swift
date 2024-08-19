@@ -58,8 +58,10 @@ private extension GridTextListCell {
     
     func configureConstraints() {
         let spacing: CGFloat = 5.0
+        let height = contentView.frame.width
         
         NSLayoutConstraint.activate([
+            imageView.heightAnchor.constraint(equalToConstant: height),
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
