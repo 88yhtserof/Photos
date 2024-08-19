@@ -12,6 +12,7 @@ class PhotoListViewController: UIViewController {
     
     let imageManager = PHImageManager()
     var fetchResult: PHFetchResult<PHAsset>
+    let albumTitle: String?
     var dataSource: DataSource!
     var snapshot: Snapshot!
     
@@ -19,7 +20,7 @@ class PhotoListViewController: UIViewController {
     
     init(assetCollection: PHAssetCollection) {
         self.fetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
-        
+        self.albumTitle = assetCollection.localizedTitle
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -53,6 +54,7 @@ private extension PhotoListViewController {
     func configureView() {
         view.backgroundColor = .white
         navigationItem.largeTitleDisplayMode = .never
+        navigationItem.title = albumTitle
     }
     
     func configureConstratins() {
