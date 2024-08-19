@@ -46,13 +46,17 @@ extension AlbumListViewController {
         let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
         let thumbnailSize = CGSize(width: itemWidth, height: itemWidth)
         
-        if let asset = fetchResult.firstObject {
+        if let asset = fetchResult.lastObject {
+            cell.assetIdentifier = asset.localIdentifier
             imageManager.requestImage(for: asset,
                                       targetSize: thumbnailSize,
-                                      contentMode: .aspectFill,
+                                      contentMode: .default,
                                       options: nil,
                                       resultHandler: { image, _ in
-                cell.thumbnailImage = image
+                
+                if cell.assetIdentifier == asset.localIdentifier {
+                    cell.thumbnailImage = image
+                }
             })
         }
         cell.text = item.localizedTitle

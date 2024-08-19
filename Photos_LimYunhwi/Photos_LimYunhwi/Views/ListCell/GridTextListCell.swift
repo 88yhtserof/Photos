@@ -8,6 +8,9 @@
 import UIKit
 
 class GridTextListCell: UICollectionViewCell {
+    
+    var assetIdentifier: String?
+    
     var thumbnailImage: UIImage? {
         didSet {
             imageView.image = thumbnailImage
@@ -39,6 +42,14 @@ class GridTextListCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        imageView.image = nil
+        textLabel.text = nil
+        secondaryTextLabel.text = nil
+    }
+
 }
 
 // MARK: Configuration
