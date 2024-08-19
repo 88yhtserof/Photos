@@ -25,7 +25,7 @@ extension AlbumListViewController: UICollectionViewDelegate {
             assetCollection = mediaTypes[indexPath.row]
         }
         
-        var PhotoListVC = PhotoListViewController(assetCollection: assetCollection)
+        let photoListVC = PhotoListViewController(assetCollection: assetCollection)
         navigationController?.pushViewController(PhotoListVC, animated: true)
     }
 }
