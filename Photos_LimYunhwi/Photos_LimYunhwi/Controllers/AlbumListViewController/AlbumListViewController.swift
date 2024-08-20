@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class AlbumListViewController: UIViewController {
+final class AlbumListViewController: UIViewController {
     
     var dataSouce: DataSource!
     var snapshot: Snapshot!

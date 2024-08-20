@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class PhotoViewController: UIViewController {
+final class PhotoViewController: UIViewController {
     
     let imageManager = ImageManager()
     var asset: PHAsset

@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-class PhotoListViewController: UIViewController {
+final class PhotoListViewController: UIViewController {
     
     var dataSource: DataSource!
     var snapshot: Snapshot!
