@@ -12,10 +12,34 @@ import Photos
 extension AlbumListViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         Task { @MainActor in
+            
+            // .myAlbum
+            if recentFetchResult != nil,
+               let recentChanges = changeInstance.changeDetails(for: recentFetchResult!) {
+                recentFetchResult = recentChanges.fetchResultAfterChanges
+                updateSnapshot(to: .myAlbum)
+            }
+            if favoriteFetchResult != nil,
+               let favoriteChanges = changeInstance.changeDetails(for: favoriteFetchResult!) {
+                favoriteFetchResult = favoriteChanges.fetchResultAfterChanges
+                updateSnapshot(to: .myAlbum)
+            }
             if userFetchResult != nil,
                let albumChanges = changeInstance.changeDetails(for: userFetchResult!) {
                 userFetchResult = albumChanges.fetchResultAfterChanges
                 updateSnapshot(to: .myAlbum)
+            }
+            
+            // .mediaTypes
+            if livephotoFetchResult != nil,
+               let livephotoChanges = changeInstance.changeDetails(for: livephotoFetchResult!) {
+                livephotoFetchResult = livephotoChanges.fetchResultAfterChanges
+                updateSnapshot(to: .mediaTypes)
+            }
+            if selfieFetchResult != nil,
+               let selfieChanges = changeInstance.changeDetails(for: selfieFetchResult!) {
+                selfieFetchResult = selfieChanges.fetchResultAfterChanges
+                updateSnapshot(to: .mediaTypes)
             }
         }
     }
