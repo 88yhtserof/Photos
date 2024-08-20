@@ -24,9 +24,9 @@ final class AlbumListViewController: UIViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
 
+    //MARK: LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSubviews()
         configureView()
         configurePhotoLibrary()
@@ -35,10 +35,7 @@ final class AlbumListViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        let scale = view.window?.screen.scale ?? 1.0
-        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
-        thumbnailSize = CGSize(width: itemWidth * scale, height: itemWidth * scale)
+        configureThunmbnailSize()
     }
     
     deinit {
@@ -95,5 +92,11 @@ private extension AlbumListViewController {
         userFetchResult = PHAssetCollection.fetchAssetCollections(with: .album, subtype: .albumRegular, options: nil)
         livephotoFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumLivePhotos, options: nil)
         selfieFetchResult = PHAssetCollection.fetchAssetCollections(with: .smartAlbum, subtype: .smartAlbumSelfPortraits, options: nil)
+    }
+    
+    func configureThunmbnailSize() {
+        let scale = view.window?.screen.scale ?? 1.0
+        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
+        thumbnailSize = CGSize(width: itemWidth * scale, height: itemWidth * scale)
     }
 }

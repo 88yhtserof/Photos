@@ -21,6 +21,7 @@ final class PhotoListViewController: UIViewController {
     
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
+    //MARK: LifeCycle
     init(assetCollection: PHAssetCollection) {
         self.fetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
         self.albumTitle = assetCollection.localizedTitle
@@ -33,7 +34,6 @@ final class PhotoListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSubviews()
         configureView()
         configureConstratins()
@@ -43,16 +43,12 @@ final class PhotoListViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        let scale = view.window?.screen.scale ?? 1.0
-        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
-        photoSize = CGSize(width: itemWidth * scale, height: itemWidth * scale)
+        configurePhotoSize()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
-        collectionView.scrollToItem(at: IndexPath(row: fetchResult.count - 1, section: 0), at: .bottom, animated: false)
+        configureScrollTo()
     }
     
     deinit {
@@ -89,5 +85,15 @@ private extension PhotoListViewController {
     
     func configurePhotoLibrary() {
         PHPhotoLibrary.shared().register(self)
+    }
+    
+    func configurePhotoSize() {
+        let scale = view.window?.screen.scale ?? 1.0
+        let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
+        photoSize = CGSize(width: itemWidth * scale, height: itemWidth * scale)
+    }
+    
+    func configureScrollTo() {
+        collectionView.scrollToItem(at: IndexPath(row: fetchResult.count - 1, section: 0), at: .bottom, animated: false)
     }
 }

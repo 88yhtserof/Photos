@@ -16,9 +16,9 @@ final class PhotoViewController: UIViewController {
     internal lazy var imageView = UIImageView()
     internal lazy var progressView = UIProgressView()
     
+    //MARK: LifeCycle
     init(asset: PHAsset) {
         self.asset = asset
-        
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -28,7 +28,6 @@ final class PhotoViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureSubviews()
         configureView()
         configureConstraints()
@@ -36,16 +35,7 @@ final class PhotoViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
-        let scale = view.window?.screen.scale ?? 1.0
-        let size = CGSize(width: imageView.bounds.width * scale,
-                          height: imageView.bounds.height * scale)
-        
-        imageManager.requestImage(with: asset,
-                                  mode: .opportunistic,
-                                  size: size,
-                                  progressHandler: progressHandler,
-                                  resultHandler: resultHandler)
+        configureImage()
     }
 }
 
@@ -69,5 +59,17 @@ private extension PhotoViewController {
             progressView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
             progressView.widthAnchor.constraint(equalToConstant: 100)
         ])
+    }
+    
+    func configureImage() {
+        let scale = view.window?.screen.scale ?? 1.0
+        let size = CGSize(width: imageView.bounds.width * scale,
+                          height: imageView.bounds.height * scale)
+        
+        imageManager.requestImage(with: asset,
+                                  mode: .opportunistic,
+                                  size: size,
+                                  progressHandler: progressHandler,
+                                  resultHandler: resultHandler)
     }
 }
