@@ -39,15 +39,16 @@ extension AlbumListViewController {
     }
     
     func fetchAssetCollectionsForMyAlbum() -> [PHAssetCollection] {
-        guard let recentCount = recentFetchResult?.count,
-              let recentCollections = recentFetchResult?.objects(at: IndexSet(0..<recentCount)),
-              let favoriteCount = favoriteFetchResult?.count,
-              let favoriteCollections = favoriteFetchResult?.objects(at: IndexSet(0..<favoriteCount)) else {
-            fatalError("Failed to fetch collections as UserLibrary and Favorites")
-        }
-        var myAlbums = recentCollections
-        myAlbums.append(contentsOf: favoriteCollections)
+        var myAlbums: [PHAssetCollection] = []
         
+        if let recentCount = recentFetchResult?.count,
+           let recentCollections = recentFetchResult?.objects(at: IndexSet(0..<recentCount)) {
+            myAlbums.append(contentsOf: recentCollections)
+        }
+        if let favoriteCount = favoriteFetchResult?.count,
+           let favoriteCollections = favoriteFetchResult?.objects(at: IndexSet(0..<favoriteCount)) {
+            myAlbums.append(contentsOf: favoriteCollections)
+        }
         if let userCollectionCount = userFetchResult?.count,
            let userCollections = userFetchResult?.objects(at: IndexSet(0..<userCollectionCount)) {
             myAlbums.append(contentsOf: userCollections)
@@ -57,11 +58,14 @@ extension AlbumListViewController {
     }
     
     func fetchAssetCollectionsForMediaTypes() -> [PHAssetCollection] {
-        guard let livephotoAssetCollection = livephotoFetchResult?.firstObject,
-              let selfieAssetCollection = selfieFetchResult?.firstObject else {
-            fatalError("Failed to fetch collections as LivePhoto and SelfPortraits")
+        var mediaTypes: [PHAssetCollection] = []
+        
+        if let livephotoAssetCollection = livephotoFetchResult?.firstObject {
+            mediaTypes.append(livephotoAssetCollection)
         }
-        let mediaTypes = [ livephotoAssetCollection, selfieAssetCollection ]
+        if let selfieAssetCollection = selfieFetchResult?.firstObject {
+            mediaTypes.append(selfieAssetCollection)
+        }
         return mediaTypes
     }
 }
