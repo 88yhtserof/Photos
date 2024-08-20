@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 
+//MARK: Types for DataSource
 extension AlbumListViewController {
     enum Section: Int {
         
@@ -35,6 +36,7 @@ extension AlbumListViewController {
     }
 }
 
+//MARK: DataSource
 extension AlbumListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Section, Item>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Section, Item>

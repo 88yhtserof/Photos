@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Supplementary view with text for a title of list
 class TitleSupplementaryView: UICollectionReusableView {
     var title: String! {
         didSet {

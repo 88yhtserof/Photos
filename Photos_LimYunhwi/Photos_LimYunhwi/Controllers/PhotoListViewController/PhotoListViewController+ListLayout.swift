@@ -7,6 +7,7 @@
 
 import UIKit
 
+// MARK: CollectionView Layout
 extension PhotoListViewController {
     func layout() -> UICollectionViewLayout {
         let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0))

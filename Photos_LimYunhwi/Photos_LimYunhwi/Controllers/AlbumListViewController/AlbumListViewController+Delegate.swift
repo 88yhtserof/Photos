@@ -1,5 +1,5 @@
 //
-//  AlbumListViewController+CollectionViewDelegate.swift
+//  AlbumListViewController+Delegate.swift
 //  Photos_LimYunhwi
 //
 //  Created by 임윤휘 on 8/18/24.
@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 
+//MARK: CollectionView Delegate
 extension AlbumListViewController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {

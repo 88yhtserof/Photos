@@ -8,6 +8,7 @@
 import UIKit
 import Photos
 
+//MARK: DataSource
 extension PhotoListViewController {
     typealias DataSource = UICollectionViewDiffableDataSource<Int, PHAsset>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Int, PHAsset>

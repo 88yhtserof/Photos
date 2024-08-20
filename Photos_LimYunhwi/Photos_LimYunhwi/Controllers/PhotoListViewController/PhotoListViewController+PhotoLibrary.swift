@@ -8,6 +8,7 @@
 import Foundation
 import Photos
 
+//MARK: PhotoLibraryChangeObserver
 extension PhotoListViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         Task { @MainActor in
