@@ -17,6 +17,7 @@
 		141CDA722C738A080097B064 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA712C738A080097B064 /* ImageManager.swift */; };
 		145570652C746EA100F63ABB /* PhotoViewController+PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145570642C746EA100F63ABB /* PhotoViewController+PhotoLibrary.swift */; };
 		145570672C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145570662C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift */; };
+		1455706B2C747A6A00F63ABB /* ImageManagerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1455706A2C747A6A00F63ABB /* ImageManagerProtocol.swift */; };
 		14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4982C6C486F0066D44F /* AppDelegate.swift */; };
 		14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */; };
 		14FAC49D2C6C486F0066D44F /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49C2C6C486F0066D44F /* AlbumListViewController.swift */; };
@@ -41,6 +42,7 @@
 		141CDA712C738A080097B064 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		145570642C746EA100F63ABB /* PhotoViewController+PhotoLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoViewController+PhotoLibrary.swift"; sourceTree = "<group>"; };
 		145570662C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoListViewController+ListLayout.swift"; sourceTree = "<group>"; };
+		1455706A2C747A6A00F63ABB /* ImageManagerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManagerProtocol.swift; sourceTree = "<group>"; };
 		14FAC4952C6C486F0066D44F /* Photos_LimYunhwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photos_LimYunhwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FAC4982C6C486F0066D44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 		141CDA702C7389AD0097B064 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				1455706A2C747A6A00F63ABB /* ImageManagerProtocol.swift */,
 				141CDA712C738A080097B064 /* ImageManager.swift */,
 			);
 			path = Model;
@@ -259,6 +262,7 @@
 				141CDA722C738A080097B064 /* ImageManager.swift in Sources */,
 				14FAC4C52C6C97E10066D44F /* AlbumListViewController+DataSource.swift in Sources */,
 				141CDA672C7212FB0097B064 /* PhotoListViewController+DataSource.swift in Sources */,
+				1455706B2C747A6A00F63ABB /* ImageManagerProtocol.swift in Sources */,
 				14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */,
 				14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */,
 				14FF07AF2C705D76005C142B /* AlbumListViewController+PhotoLibrary.swift in Sources */,

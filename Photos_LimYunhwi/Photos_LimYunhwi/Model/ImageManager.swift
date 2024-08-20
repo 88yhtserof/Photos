@@ -8,7 +8,7 @@
 import UIKit
 import Photos
 
-struct ImageManager {
+struct ImageManager: ImageManagerProtocol {
     private var imageManager = PHImageManager()
     
     public func requestImage(with asset: PHAsset, mode deliveryMode: PHImageRequestOptionsDeliveryMode, size targetSize: CGSize, progressHandler: PHAssetImageProgressHandler? = nil, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) {
