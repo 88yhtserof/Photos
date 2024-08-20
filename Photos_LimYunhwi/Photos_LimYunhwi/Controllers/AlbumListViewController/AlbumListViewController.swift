@@ -10,7 +10,7 @@ import Photos
 
 class AlbumListViewController: UIViewController {
     
-    var imageManager = PHImageManager()
+    var imageManager = ImageManager()
     var favoriteFetchResult: PHFetchResult<PHAssetCollection>?
     var recentFetchResult: PHFetchResult<PHAssetCollection>?
     var livephotoFetchResult: PHFetchResult<PHAssetCollection>?

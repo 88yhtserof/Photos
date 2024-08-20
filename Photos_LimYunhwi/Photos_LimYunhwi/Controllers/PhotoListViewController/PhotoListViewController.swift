@@ -10,7 +10,7 @@ import Photos
 
 class PhotoListViewController: UIViewController {
     
-    let imageManager = PHImageManager()
+    let imageManager = ImageManager()
     var fetchResult: PHFetchResult<PHAsset>
     let albumTitle: String?
     var dataSource: DataSource!

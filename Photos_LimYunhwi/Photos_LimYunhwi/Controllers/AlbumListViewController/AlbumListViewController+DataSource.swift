@@ -42,67 +42,66 @@ extension AlbumListViewController {
     func myAlbumCellRegistrationHandler(cell: GridTextListCell, indexPath: IndexPath, item: PHAssetCollection) {
         let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
         
-        
         if let asset = fetchResult.lastObject {
             cell.assetIdentifier = asset.localIdentifier
-            imageManager.requestImage(for: asset,
-                                      targetSize: thumbnailSize,
-                                      contentMode: .default,
-                                      options: nil,
+            imageManager.requestImage(with: asset,
+                                      mode: .opportunistic,
+                                      size: thumbnailSize,
                                       resultHandler: { image, _ in
-                
                 if cell.assetIdentifier == asset.localIdentifier {
                     cell.thumbnailImage = image
                 }
             })
+            cell.text = item.localizedTitle
+            cell.secondaryText = String(fetchResult.count)
         }
-        cell.text = item.localizedTitle
-        cell.secondaryText = String(fetchResult.count)
     }
-    
-    func mediaTypesCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: PHAssetCollection) {
-        let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
-        let albumTitle = item.localizedTitle ?? ""
-        let imageName = MediaTypeImage(rawValue: albumTitle)?.name ?? ""
         
-        var configuration = UIListContentConfiguration.valueCell()
-        configuration.image = UIImage(systemName: imageName)
-        configuration.text = albumTitle
-        configuration.secondaryText = String(fetchResult.count)
+        func mediaTypesCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: PHAssetCollection) {
+            cell.selectedBackgroundView = UIView()
+            
+            let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
+            let albumTitle = item.localizedTitle ?? ""
+            let imageName = MediaTypeImage(rawValue: albumTitle)?.name ?? ""
+            
+            var configuration = UIListContentConfiguration.valueCell()
+            configuration.image = UIImage(systemName: imageName)
+            configuration.text = albumTitle
+            configuration.secondaryText = String(fetchResult.count)
+            
+            cell.contentConfiguration = configuration
+            cell.accessories = [.disclosureIndicator()]
+        }
         
-        cell.contentConfiguration = configuration
-        cell.accessories = [.disclosureIndicator()]
-    }
-    
-    func supplementaryRegistrationHandler(supplementaryView: TitleSupplementaryView, string: String, indexPath: IndexPath) {
-        supplementaryView.title = snapshot.sectionIdentifiers[indexPath.section].title
-    }
-    
-    func updateSnapshot() {
-        let myAlbums = fetchAssetCollectionsForMyAlbum()
-        let myAlbumItems = myAlbums.map{ Item(myAlbums: $0) }
-        let mediaTypes = fetchAssetCollectionsForMediaTypes()
-        let mediaTypeItems = mediaTypes.map{ Item(mediaTypes: $0) }
+        func supplementaryRegistrationHandler(supplementaryView: TitleSupplementaryView, string: String, indexPath: IndexPath) {
+            supplementaryView.title = snapshot.sectionIdentifiers[indexPath.section].title
+        }
         
-        snapshot = Snapshot()
-        snapshot.appendSections([.myAlbum, .mediaTypes])
-        snapshot.appendItems(myAlbumItems, toSection: .myAlbum)
-        snapshot.appendItems(mediaTypeItems, toSection: .mediaTypes)
-        dataSouce.apply(snapshot)
-    }
-    
-    func updateSnapshot(to section: Section) {
-        var items: [Item] = []
-        
-        switch section {
-        case .myAlbum:
+        func updateSnapshot() {
             let myAlbums = fetchAssetCollectionsForMyAlbum()
-            items = myAlbums.map{ Item(myAlbums: $0) }
-        case .mediaTypes:
+            let myAlbumItems = myAlbums.map{ Item(myAlbums: $0) }
             let mediaTypes = fetchAssetCollectionsForMediaTypes()
-            items = mediaTypes.map{ Item(mediaTypes: $0) }
+            let mediaTypeItems = mediaTypes.map{ Item(mediaTypes: $0) }
+            
+            snapshot = Snapshot()
+            snapshot.appendSections([.myAlbum, .mediaTypes])
+            snapshot.appendItems(myAlbumItems, toSection: .myAlbum)
+            snapshot.appendItems(mediaTypeItems, toSection: .mediaTypes)
+            dataSouce.apply(snapshot)
         }
-        snapshot.appendItems(items, toSection: section)
-        dataSouce.apply(snapshot)
+        
+        func updateSnapshot(to section: Section) {
+            var items: [Item] = []
+            
+            switch section {
+            case .myAlbum:
+                let myAlbums = fetchAssetCollectionsForMyAlbum()
+                items = myAlbums.map{ Item(myAlbums: $0) }
+            case .mediaTypes:
+                let mediaTypes = fetchAssetCollectionsForMediaTypes()
+                items = mediaTypes.map{ Item(mediaTypes: $0) }
+            }
+            snapshot.appendItems(items, toSection: section)
+            dataSouce.apply(snapshot)
+        }
     }
-}

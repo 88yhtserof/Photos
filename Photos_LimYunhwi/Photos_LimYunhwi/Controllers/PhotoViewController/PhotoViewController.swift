@@ -10,7 +10,7 @@ import Photos
 
 class PhotoViewController: UIViewController {
     
-    let imageManager = PHImageManager()
+    let imageManager = ImageManager()
     var asset: PHAsset
     
     lazy var imageView = UIImageView()
@@ -36,7 +36,16 @@ class PhotoViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        configureImageView()
+        
+        let scale = view.window?.screen.scale ?? 1.0
+        let size = CGSize(width: imageView.bounds.width * scale,
+                          height: imageView.bounds.height * scale)
+        
+        imageManager.requestImage(with: asset,
+                                  mode: .opportunistic,
+                                  size: size,
+                                  progressHandler: progressHandler,
+                                  resultHandler: resultHandler)
     }
 }
 
@@ -60,36 +69,4 @@ private extension PhotoViewController {
             progressView.widthAnchor.constraint(equalToConstant: 100)
         ])
     }
-    
-    func configureImageView() {
-        let option = PHImageRequestOptions()
-        option.deliveryMode = .opportunistic
-        option.isNetworkAccessAllowed = true
-        option.progressHandler = { progress, _, _, info in
-            Task { @MainActor in
-                self.progressView.progress = Float(progress)
-            }
-        }
-        
-        let scale = view.window?.screen.scale ?? 1.0
-        let size = CGSize(width: imageView.bounds.width * scale,
-                          height: imageView.bounds.height * scale)
-        
-        imageManager.requestImage(for: asset,
-                                  targetSize: size,
-                                  contentMode: .aspectFit,
-                                  options: option,
-                                  resultHandler: { image, info in
-            guard let isDegraded = info?[PHImageResultIsDegradedKey] as? Bool else { return }
-            
-            if isDegraded && self.imageView.image == nil {
-                self.imageView.image = image
-            }
-            if !isDegraded {
-                self.imageView.image = image
-                self.progressView.isHidden = true
-            }
-        })
-    }
-    
 }

@@ -15,14 +15,14 @@ extension PhotoListViewController {
     func cellRegistraionHandler(cell: GridImageListCell, indexPath: IndexPath, item: PHAsset) {
         
         cell.assetIdentifier = item.localIdentifier
-        imageManager.requestImage(for: item,
-                                  targetSize: photoSize,
-                                  contentMode: .aspectFill,
-                                  options: nil) { image, _ in
+        imageManager.requestImage(with: item,
+                                  mode: .fastFormat,
+                                  size: photoSize,
+                                  resultHandler: { image, _ in
             if cell.assetIdentifier == item.localIdentifier {
                 cell.image = image
             }
-        }
+        })
     }
     
     func createSnapshot() {
