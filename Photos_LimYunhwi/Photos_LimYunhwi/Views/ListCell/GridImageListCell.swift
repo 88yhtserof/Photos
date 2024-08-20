@@ -7,6 +7,7 @@
 
 import UIKit
 
+/// Grid shape list cell with only image
 class GridImageListCell: UICollectionViewCell {
     
     var assetIdentifier: String?
