@@ -13,8 +13,8 @@ class PhotoViewController: UIViewController {
     let imageManager = ImageManager()
     var asset: PHAsset
     
-    lazy var imageView = UIImageView()
-    lazy var progressView = UIProgressView()
+    internal lazy var imageView = UIImageView()
+    internal lazy var progressView = UIProgressView()
     
     init(asset: PHAsset) {
         self.asset = asset
@@ -49,6 +49,7 @@ class PhotoViewController: UIViewController {
     }
 }
 
+//MARK: Configuration
 private extension PhotoViewController {
     
     func configureSubviews() {

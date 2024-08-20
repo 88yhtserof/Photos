@@ -10,17 +10,19 @@ import Photos
 
 class AlbumListViewController: UIViewController {
     
+    var dataSouce: DataSource!
+    var snapshot: Snapshot!
+    
     var imageManager = ImageManager()
+    var thumbnailSize: CGSize!
+    
     var favoriteFetchResult: PHFetchResult<PHAssetCollection>?
     var recentFetchResult: PHFetchResult<PHAssetCollection>?
     var livephotoFetchResult: PHFetchResult<PHAssetCollection>?
     var selfieFetchResult: PHFetchResult<PHAssetCollection>?
     var userFetchResult: PHFetchResult<PHAssetCollection>?
-    var dataSouce: DataSource!
-    var snapshot: Snapshot!
-    var thumbnailSize: CGSize!
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
 
     override func viewDidLoad() {
         super.viewDidLoad()

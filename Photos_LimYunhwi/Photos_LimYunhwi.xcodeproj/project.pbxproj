@@ -16,6 +16,7 @@
 		141CDA6E2C7337060097B064 /* PhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA6D2C7337060097B064 /* PhotoViewController.swift */; };
 		141CDA722C738A080097B064 /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 141CDA712C738A080097B064 /* ImageManager.swift */; };
 		145570652C746EA100F63ABB /* PhotoViewController+PhotoLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145570642C746EA100F63ABB /* PhotoViewController+PhotoLibrary.swift */; };
+		145570672C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 145570662C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift */; };
 		14FAC4992C6C486F0066D44F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC4982C6C486F0066D44F /* AppDelegate.swift */; };
 		14FAC49B2C6C486F0066D44F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */; };
 		14FAC49D2C6C486F0066D44F /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 14FAC49C2C6C486F0066D44F /* AlbumListViewController.swift */; };
@@ -39,6 +40,7 @@
 		141CDA6D2C7337060097B064 /* PhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewController.swift; sourceTree = "<group>"; };
 		141CDA712C738A080097B064 /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		145570642C746EA100F63ABB /* PhotoViewController+PhotoLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoViewController+PhotoLibrary.swift"; sourceTree = "<group>"; };
+		145570662C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoListViewController+ListLayout.swift"; sourceTree = "<group>"; };
 		14FAC4952C6C486F0066D44F /* Photos_LimYunhwi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Photos_LimYunhwi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		14FAC4982C6C486F0066D44F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		14FAC49A2C6C486F0066D44F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				141CDA5E2C7207DF0097B064 /* PhotoListViewController.swift */,
 				141CDA662C7212FB0097B064 /* PhotoListViewController+DataSource.swift */,
 				141CDA682C7324A20097B064 /* PhotoListViewController+CollectionViewDelegate.swift */,
+				145570662C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift */,
 				141CDA6A2C732A210097B064 /* PhotoListViewController+PhotoLibrary.swift */,
 			);
 			path = PhotoListViewController;
@@ -100,6 +103,22 @@
 				141CDA712C738A080097B064 /* ImageManager.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		145570682C74751C00F63ABB /* SupplementaryView */ = {
+			isa = PBXGroup;
+			children = (
+				14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */,
+			);
+			path = SupplementaryView;
+			sourceTree = "<group>";
+		};
+		145570692C74753C00F63ABB /* UIView+ */ = {
+			isa = PBXGroup;
+			children = (
+				14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */,
+			);
+			path = "UIView+";
 			sourceTree = "<group>";
 		};
 		14FAC48C2C6C486F0066D44F = {
@@ -136,9 +155,9 @@
 		14FAC4B62C6C95640066D44F /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				145570692C74753C00F63ABB /* UIView+ */,
+				145570682C74751C00F63ABB /* SupplementaryView */,
 				141CDA652C7212BC0097B064 /* ListCell */,
-				14FAC4B72C6C95750066D44F /* UIView+Constraints.swift */,
-				14FAC4C72C6CA2CB0066D44F /* TitleSupplementaryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -251,6 +270,7 @@
 				141CDA5C2C71F3230097B064 /* AlbumListViewController+CollectionViewDelegate.swift in Sources */,
 				14FAC4C32C6C97820066D44F /* GridTextListCell.swift in Sources */,
 				141CDA6E2C7337060097B064 /* PhotoViewController.swift in Sources */,
+				145570672C7473AB00F63ABB /* PhotoListViewController+ListLayout.swift in Sources */,
 				141CDA6B2C732A210097B064 /* PhotoListViewController+PhotoLibrary.swift in Sources */,
 				141CDA642C7210CE0097B064 /* GridImageListCell.swift in Sources */,
 			);

@@ -11,7 +11,7 @@ import Photos
 struct ImageManager {
     private var imageManager = PHImageManager()
     
-    func requestImage(with asset: PHAsset, mode deliveryMode: PHImageRequestOptionsDeliveryMode, size targetSize: CGSize, progressHandler: PHAssetImageProgressHandler? = nil, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) {
+    public func requestImage(with asset: PHAsset, mode deliveryMode: PHImageRequestOptionsDeliveryMode, size targetSize: CGSize, progressHandler: PHAssetImageProgressHandler? = nil, resultHandler: @escaping (UIImage?, [AnyHashable : Any]?) -> Void) {
         
         let options = PHImageRequestOptions()
         options.deliveryMode = deliveryMode

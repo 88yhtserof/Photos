@@ -10,14 +10,16 @@ import Photos
 
 class PhotoListViewController: UIViewController {
     
-    let imageManager = ImageManager()
-    var fetchResult: PHFetchResult<PHAsset>
-    let albumTitle: String?
     var dataSource: DataSource!
     var snapshot: Snapshot!
+    
+    let imageManager = ImageManager()
+    
+    var fetchResult: PHFetchResult<PHAsset>
+    let albumTitle: String?
     var photoSize: CGSize!
     
-    lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     
     init(assetCollection: PHAssetCollection) {
         self.fetchResult = PHAsset.fetchAssets(in: assetCollection, options: nil)
@@ -83,21 +85,5 @@ private extension PhotoListViewController {
     
     func configurePhotoLibrary() {
         PHPhotoLibrary.shared().register(self)
-    }
-}
-
-extension PhotoListViewController {
-    func layout() -> UICollectionViewLayout {
-        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.25), heightDimension: .fractionalHeight(1.0))
-        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalWidth(0.25))
-        
-        let item = NSCollectionLayoutItem(layoutSize: itemSize)
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
-        group.interItemSpacing = .flexible(3)
-        let section = NSCollectionLayoutSection(group: group)
-        section.interGroupSpacing = 3
-        let layout = UICollectionViewCompositionalLayout(section: section)
-        
-        return layout
     }
 }
