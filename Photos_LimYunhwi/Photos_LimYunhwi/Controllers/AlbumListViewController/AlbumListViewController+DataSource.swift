@@ -43,12 +43,12 @@ extension AlbumListViewController {
         let fetchResult = PHAsset.fetchAssets(in: item, options: nil)
         
         if let asset = fetchResult.lastObject {
-            cell.assetIdentifier = asset.localIdentifier
+            cell.id = asset.localIdentifier
             imageManager.requestImage(with: asset,
                                       mode: .opportunistic,
                                       size: thumbnailSize,
                                       resultHandler: { image, _ in
-                if cell.assetIdentifier == asset.localIdentifier {
+                if cell.id == asset.localIdentifier {
                     cell.thumbnailImage = image
                 }
             })

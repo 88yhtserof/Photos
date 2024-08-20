@@ -8,10 +8,10 @@
 import UIKit
 
 /// Grid shape list cell with text and image
-class GridTextListCell: UICollectionViewCell {
+class GridTextListCell: UICollectionViewCell, Identifiable {
+    typealias ID = String?
     
-    var assetIdentifier: String?
-    
+    var id: String?
     var thumbnailImage: UIImage? {
         didSet {
             imageView.image = thumbnailImage

@@ -14,12 +14,12 @@ extension PhotoListViewController {
     
     func cellRegistraionHandler(cell: GridImageListCell, indexPath: IndexPath, item: PHAsset) {
         
-        cell.assetIdentifier = item.localIdentifier
+        cell.id = item.localIdentifier
         imageManager.requestImage(with: item,
                                   mode: .fastFormat,
                                   size: photoSize,
                                   resultHandler: { image, _ in
-            if cell.assetIdentifier == item.localIdentifier {
+            if cell.id == item.localIdentifier {
                 cell.image = image
             }
         })
