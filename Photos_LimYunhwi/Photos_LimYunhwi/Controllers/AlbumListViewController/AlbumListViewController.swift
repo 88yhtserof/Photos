@@ -40,6 +40,10 @@ final class AlbumListViewController: UIViewController {
         let itemWidth = collectionView.collectionViewLayout.layoutAttributesForItem(at: IndexPath(item: 0, section: 0))?.size.width ?? 0
         thumbnailSize = CGSize(width: itemWidth * scale, height: itemWidth * scale)
     }
+    
+    deinit {
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
+    }
 }
 
 // MARK: Configuration

@@ -54,6 +54,10 @@ final class PhotoListViewController: UIViewController {
         
         collectionView.scrollToItem(at: IndexPath(row: fetchResult.count - 1, section: 0), at: .bottom, animated: false)
     }
+    
+    deinit {
+        PHPhotoLibrary.shared().unregisterChangeObserver(self)
+    }
 }
 
 //MARK: Configuration
