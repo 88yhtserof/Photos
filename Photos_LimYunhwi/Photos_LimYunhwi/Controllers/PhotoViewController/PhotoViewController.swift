@@ -13,8 +13,8 @@ final class PhotoViewController: UIViewController {
     let imageManager = ImageManager()
     var asset: PHAsset
     
-    internal lazy var imageView = UIImageView()
-    internal lazy var progressView = UIProgressView()
+    lazy var imageView = UIImageView()
+    lazy var progressView = UIProgressView()
     
     //MARK: LifeCycle
     init(asset: PHAsset) {
