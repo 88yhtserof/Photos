@@ -52,9 +52,9 @@ extension AlbumListViewController {
                     cell.thumbnailImage = image
                 }
             })
-            cell.text = item.localizedTitle
-            cell.secondaryText = String(fetchResult.count)
         }
+        cell.text = item.localizedTitle
+        cell.secondaryText = String(fetchResult.count)
     }
     
     func mediaTypesCellRegistrationHandler(cell: UICollectionViewListCell, indexPath: IndexPath, item: PHAssetCollection) {
