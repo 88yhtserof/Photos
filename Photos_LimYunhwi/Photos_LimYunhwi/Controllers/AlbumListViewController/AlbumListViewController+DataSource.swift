@@ -103,7 +103,13 @@ extension AlbumListViewController {
             let mediaTypes = fetchAssetCollectionsForMediaTypes()
             items = mediaTypes.map{ Item(mediaTypes: $0) }
         }
+        
+        let itemsBeforeChange = snapshot.itemIdentifiers(inSection: section)
+        if !itemsBeforeChange.isEmpty {
+            snapshot.deleteItems(itemsBeforeChange)
+        }
         snapshot.appendItems(items, toSection: section)
         dataSouce.apply(snapshot)
     }
 }
+

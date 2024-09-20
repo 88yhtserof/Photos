@@ -34,6 +34,11 @@ extension PhotoListViewController {
     
     func updateSnapshot() {
         let items = fetchResult.objects(at: IndexSet(0..<fetchResult.count))
+        
+        let itemsBeforeChange = snapshot.itemIdentifiers
+        if !itemsBeforeChange.isEmpty {
+            snapshot.deleteItems(itemsBeforeChange)
+        }
         snapshot.appendItems(items)
         dataSource.apply(snapshot)
     }
